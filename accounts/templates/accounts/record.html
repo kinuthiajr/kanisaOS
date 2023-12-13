@@ -1,0 +1,206 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add any other meta tags, stylesheets, or scripts here -->
+</head>
+
+<body>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from earning your own money!</p>
+            <input type="submit" name="" value="Login" /><br />
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Spouse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Spouse Information -->
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Spouse Information</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <!-- Fields for Spouse Information -->
+                                <div class="form-group">
+                                    <label for="{{ spouse_form.name.id_for_label }}">Name</label>
+                                    <input type="text" class="form-control" id="{{ spouse_form.name.id_for_label }}" name="{{ spouse_form.name.html_name }}" value="{{ spouse_form.name.value|default_if_none:'' }}" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="{{ spouse_form.baptism_date.id_for_label }}">Baptism Date</label>
+                                    <input type="date" class="form-control" id="{{ spouse_form.baptism_date.id_for_label }}" name="{{ spouse_form.baptism_date.html_name }}" value="{{ spouse_form.baptism_date.value|date:'Y-m-d'|default_if_none:'' }}" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ spouse_form.communicant.html_name }}">
+                                        <option value="" {% if not spouse_form.communicant.value %}selected{% endif %}>Select Communicant</option>
+                                        {% for choice in spouse_form.fields.communicant.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.communicant.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ spouse_form.cell_group.html_name }}">
+                                        <option value="" {% if not spouse_form.cell_group.value %}selected{% endif %}>Select Cell group</option>
+                                        {% for choice in spouse_form.fields.cell_group.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.cell_group.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Fields for Spouse Information -->
+                                <div class="form-group">
+                                    <label for="{{ spouse_form.phone_number.id_for_label }}">Phone</label>
+                                    <input type="text" class="form-control" id="{{ spouse_form.phone_number.id_for_label }}" name="{{ spouse_form.phone_number.html_name }}" value="{{ spouse_form.phone_number.value|default_if_none:'' }}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ spouse_form.confirmation_date.id_for_label }}">Confirmation Date</label>
+                                    <input type="date" class="form-control" id="{{ spouse_form.confirmation_date.id_for_label }}" name="{{ spouse_form.confirmation_date.html_name }}" value="{{ spouse_form.confirmation_date.value|date:'Y-m-d'|default_if_none:'' }}" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ spouse_form.service_attend.html_name }}">
+                                        <option value="" {% if not spouse_form.service_attend.value %}selected{% endif %}>Select Service Attend</option>
+                                        {% for choice in spouse_form.fields.service_attend.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.service_attend.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ spouse_form.marital_status.html_name }}">
+                                        <option value="" {% if not spouse_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
+                                        {% for choice in spouse_form.fields.marital_status.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Member Profile</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <!-- Fields for Member Profile -->
+                                <div class="form-group">
+                                    <label for="{{ member_form.name.id_for_label }}">Name</label>
+                                    <input type="text" class="form-control" id="{{ member_form.name.id_for_label }}" name="{{ member_form.name.html_name}}" placeholder="Name *" value="{{ member_form.name.value }}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmation_date">Confirmation Date</label>
+                                    <input type="date" class="form-control" id="{{ member_form.confirmation_date.id_for_label }}" name="{{member_form.confirmation_date.html_name}}" value="{{ spouse_form.baptism_date.value|date:"Y-m-d" }}" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ member_form.service_attend.html_name}}">
+                                        <option value="" {% if not member_form.service_attend.value %}selected{% endif %}>Service Attend</option>
+                                        {% for choice in member_form.fields.service_attend.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == member_form.service_attend.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="spouse">Spouse</label>
+                                    <select class="form-control" name="{{ member_form.spouse.html_name }}" id="spouse">
+                                        {% for id, name in member_form.fields.spouse.choices %}
+                                            <option value="{{ id }}" {% if id == member_form.spouse.value %}selected{% endif %}>{{ name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                
+
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Fields for Member Profile -->
+                                <div class="form-group">
+                                    <label for="{{ member_form.phone.id_for_label }}">Phone</label>
+                                    <input type="text" name="{{ member_form.phone.html_name }}" id="{{ member_form.phone.id_for_label }}" class="form-control" placeholder="Phone *" value="{{ member_form.phone_number.value }}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmation_date">Baptism Date</label>
+                                    <input type="date" class="form-control" id="{{ member_form.baptism_date.id_for_label }}" value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
+                                </div>
+                            
+
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ member_form.communicant.html_name}}">
+                                        <option value="" {% if not spouse_form.communicant.value %}selected{% endif %}>Communicant</option>
+                                        {% for choice in spouse_form.fields.communicant.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == member_form.communicant.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ member_form.cell_group.html_name }}">
+                                        <option value="" {% if not member_form.cell_group.value %}selected{% endif %}>Cell group</option>
+                                        {% for choice in member_form.fields.cell_group.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == member_form.cell_group.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="{{ member_form.marital_status.html_name }}">
+                                        <option value="" {% if not member_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
+                                        {% for choice in member_form.fields.marital_status.choices %}
+                                            <option value="{{ choice.0 }}" {% if choice.0 == member_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    
+                                </div>
+
+                                
+
+                            </div>
+                            <div class="col-md-12">
+                                <!-- Submit Button for Member Profile -->
+                                <input type="submit" class="btnRegister" value="Submit Member Profile Information" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script to initialize the tabs -->
+<script>
+    $(document).ready(function(){
+        $('#myTab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    });
+</script>
+</body>
+</html>
+                       
+{% endblock content %}
+
