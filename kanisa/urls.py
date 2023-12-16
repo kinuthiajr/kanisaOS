@@ -21,7 +21,8 @@ from accounts.views import (
     spouse,
     member,
     tabular,
-    edit
+    edit,
+    deletemember,
     
 )
 from users.views import(
@@ -38,6 +39,7 @@ urlpatterns = [
     path('spouse/',spouse,name='spouse'),
     path('member/',member,name='member'),
     path('memberdata/',tabular,name='memberdata'),
-    path('edit/<int:record_id>/',edit,name='edit')
+    path('edit/<int:record_id>/',edit,name='edit'),
+    path('delete/<int:record_id>/',deletemember,name='delete')
     
-]
+] 

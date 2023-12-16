@@ -35,7 +35,7 @@
         <div class="container">
             <form class="form-spouse" method="post">
                 {% csrf_token %}
-                <h2>Update Member Form</h2>
+                <h2>Delete Member Form</h2>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
@@ -97,15 +97,14 @@
                                 {% endfor %}
                             </select>
                         </div>
-
                     </div>
-                    
-                        <!-- Submit Button for Member Profile -->
-                    <input type="submit" class="btn btn-success btn-block" value="Submit" />
-                    
+                        
                 </div>
                 
-
+                <div>
+                    <input type="submit" value="Delete" class="btn btn-danger btn-block">
+                    <a href="/memberdata" class="btn btn-secondary btn-block">Cancel</a>
+                </div>
             </form>
 
         </div>

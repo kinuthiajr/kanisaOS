@@ -51,15 +51,14 @@ def edit(request, record_id):
         if member_form.is_valid():
             member_form.save()
             return redirect('memberdata')
-
     return render(request, 'accounts/edit.html', {'member_form': member_form, 'record': record})
 
 
+def deletemember(request,record_id):
+    record = get_object_or_404(MemberProfile,pk=record_id)
+    member_form = MemberProfileForm(instance=record)
+    if request.method =='POST':
+        record.delete()
+        return redirect('memberdata')
+    return render(request, 'accounts/delete.html', {'record': record,'member_form':member_form})
     
-
-    
-    
-
-
-
-
