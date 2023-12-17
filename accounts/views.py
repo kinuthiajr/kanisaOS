@@ -75,5 +75,5 @@ def editspouse(request,record_id):
         if spouse_form.is_valid():
             spouse_form.save()
             return redirect('spousedata')
-        return render(request,'accounts/editspouse.html',{'spouse_form':spouse_form,'record':record})
+    return render(request,'accounts/editspouse.html',{'spouse_form':spouse_form,'record':record})
     

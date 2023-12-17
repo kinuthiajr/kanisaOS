@@ -33,17 +33,17 @@
                 </tr>
             </thead>
             <tbody>
-                {% for member in members %}
+                {% for spouse in spouse %}
                 <tr>
-                    <td><a href="{% url 'editspouse' member.id %}">{{ member.name}}</a></td>
+                    <td><a href="{% url 'editspouse' spouse.id %}">{{ spouse.name}}</a></td>
                     
-                    <td>{{ member.phone_number }}</td>
-                    <td>{{ member.confirmation_date }}</td>
-                    <td>{{ member.baptism_date }}</td>
-                    <td>{{ member.service_attend }}</td>
-                    <td>{{ member.cell_group}}</td>
-                    <td>{{ member.marital_status}}</td>
-                    <td>{{ member.communicant}}</td>
+                    <td>{{ spouse.phone_number }}</td>
+                    <td>{{ spouse.confirmation_date }}</td>
+                    <td>{{ spouse.baptism_date }}</td>
+                    <td>{{ spouse.communicant }}</td>
+                    <td>{{ spouse.cell_group}}</td>
+                    <td>{{ spouse.marital_status}}</td>
+                    <td>{{ spouse.service_attend}}</td>
                     
                 </tr>
                 {% endfor %}
