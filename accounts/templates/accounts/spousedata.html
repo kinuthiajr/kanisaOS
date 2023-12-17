@@ -30,6 +30,7 @@
                     <th>Cell Group</th>
                     <th>Marital Status</th>
                     <th>Service Attend</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +45,7 @@
                     <td>{{ spouse.cell_group}}</td>
                     <td>{{ spouse.marital_status}}</td>
                     <td>{{ spouse.service_attend}}</td>
-                    
+                    <td><a href="{% url 'deletespouse' spouse.id %}"> Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

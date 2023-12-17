@@ -84,3 +84,11 @@ def listmembers(request):
 def listspouse(request):
     queryset = Spouse.objects.all()
     return render(request,'accounts/spousedata.html',{'queryset':queryset})
+
+def deletespouse(request,record_id):
+    record = get_object_or_404(Spouse,pk=record_id)
+    spouse_form = SpouseForm(instance=record)
+    if request.method == 'POST':
+        record.delete()
+        return redirect('spousedata')
+    return render(request,'accounts/deletespouse.html',{'record':record,'spouse_form':spouse_form})
