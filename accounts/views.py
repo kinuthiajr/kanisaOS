@@ -76,4 +76,11 @@ def editspouse(request,record_id):
             spouse_form.save()
             return redirect('spousedata')
     return render(request,'accounts/editspouse.html',{'spouse_form':spouse_form,'record':record})
-    
+
+def listmembers(request):
+    queryset = MemberProfile.objects.all()
+    return render(request,'accounts/memberdata.html',{'queryset':queryset})
+
+def listspouse(request):
+    queryset = Spouse.objects.all()
+    return render(request,'accounts/spousedata.html',{'queryset':queryset})
