@@ -13,7 +13,7 @@ def spouse(request):
         spouse_form = SpouseForm(request.POST)
         if spouse_form.is_valid():
             spouse_form.save()
-            return redirect('home')  
+            return redirect('spousedata')  
         else:
             print(spouse_form.errors)  
     else:
@@ -41,6 +41,10 @@ def tabular(request):
     members = MemberProfile.objects.all()
     return render(request,'accounts/memberdata.html',{'members':members})
 
+def spousetabular(request):
+    spouse = Spouse.objects.all()
+    return render(request,'accounts/spousedata.html',{'spouse':spouse})
+
 
 def edit(request, record_id):
     record = get_object_or_404(MemberProfile, pk=record_id)
@@ -61,4 +65,15 @@ def deletemember(request,record_id):
         record.delete()
         return redirect('memberdata')
     return render(request, 'accounts/delete.html', {'record': record,'member_form':member_form})
+
+
+def editspouse(request,record_id):
+    record = get_object_or_404(Spouse,pk=record_id)
+    spouse_form = SpouseForm(instance=record)
+    if request.method == 'POST':
+        spouse_form = SpouseForm(request.POST,instance=record)
+        if spouse_form.is_valid():
+            spouse_form.save()
+            return redirect('spousedata')
+        return render(request,'accounts/editspouse.html',{'spouse_form':spouse_form,'record':record})
     

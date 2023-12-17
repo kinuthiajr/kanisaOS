@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="{% static 'script.js' %}"></script>
+    
+</head>
+<body>
+    <div class="container pt-3" >
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Confirmation Date</th>
+                    <th>Baptism Date</th>
+                    <th>Communicant</th>
+                    <th>Cell Group</th>
+                    <th>Marital Status</th>
+                    <th>Service Attend</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr>
+                    <td><a href="{% url 'editspouse' member.id %}">{{ member.name}}</a></td>
+                    
+                    <td>{{ member.phone_number }}</td>
+                    <td>{{ member.confirmation_date }}</td>
+                    <td>{{ member.baptism_date }}</td>
+                    <td>{{ member.service_attend }}</td>
+                    <td>{{ member.cell_group}}</td>
+                    <td>{{ member.marital_status}}</td>
+                    <td>{{ member.communicant}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+   
+</body>
+</html>
+{% endblock content %}
