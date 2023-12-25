@@ -33,6 +33,7 @@ from accounts.views import (
 from users.views import(
     register_view,
     sign_in,
+    signout,
 )
 
 
@@ -50,6 +51,7 @@ urlpatterns = [
     path('editspouse/<int:record_id>/',editspouse,name='editspouse'),
     path('memberdata/',listmembers,name='memberdata'),
     path('spousedata/',listspouse,name='spousedata'),
-    path('deletespouse/<int:record_id>/',deletespouse,name='deletespouse')
+    path('deletespouse/<int:record_id>/',deletespouse,name='deletespouse'),
+    path('signout/',signout,name='signout')
     
 ] 

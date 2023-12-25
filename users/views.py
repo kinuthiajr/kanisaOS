@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from users.forms import RegistrationForm
 from users.forms import SigninForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from . models import User
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+
 
 def register_view(request, **kwargs):
     if request.user.is_authenticated:
@@ -25,7 +26,7 @@ def register_view(request, **kwargs):
                 destination = kwargs.get('next')
                 if destination:
                     return redirect(destination)
-                return redirect('home')  
+                return redirect('member')  
     else:
         form = RegistrationForm()
 
@@ -47,7 +48,7 @@ def sign_in(request, **kwargs):
                 login(request, user)
                 messages.success(request,'Login Successful')
                 print("User logged in successfully.")
-                return redirect('home')
+                return redirect('member')
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
             print(f"Form errors: {form.errors}")
@@ -57,4 +58,6 @@ def sign_in(request, **kwargs):
 
     return render(request, 'users/signin.html', {'form': form})
 
-    
+def signout(request):
+    logout(request)
+    return redirect('home')
