@@ -2,35 +2,49 @@
 {% load static %}
 {% block content %}
 
-<div class="bg-image">
-    <style>
-        body, html {
-        margin: 0;
-        padding: 0;
-        
-    }
-    
-    .bg-image {
-            background-image: url('{% static "img/img-1.png" %}');
-            background-size: cover;
-            background-position: center;
-            height: 90vh; /* Set the height of the container to the viewport height */
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background-color: white;
-            display: flex;
-            justify-content: flex-start; /* Align content to the left */
-            align-items: center;
-            
-            
-    }
+<div class="container1">
+    <div class="container11">
+        <div class="image11">
+            <img src="{% static 'img/img-1.png' %}" alt="Image" />
+        </div>
+    </div>
 
-    
-    
-    </style>
+    <div class="container12">
+        <div class="image12">
+            <img src="{% static 'img/message1.png' %}" alt="Image" />
+        </div>
+    </div>
 </div>
 
+<style>
+    .container1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 85vh;
+        padding: 0 20px; 
+    }
+
+    .container11,
+    .container12 {
+        width: 45%; 
+    }
+
+    .image11{
+      width: 120%;
+      height: 100%;
+      
+    }
+    
+    .image12 {
+        width: 80%;
+        
+        height: 50%;
+        
+    }
+    .container12 {
+        order: 1; 
+    }
+</style>
 
 {% endblock content %}
