@@ -1,21 +1,36 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<div>
-    HOME AFTER REDIRECT: Shows that the redirect is working
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome, {{ username }}</h1>
-    <p>User Data: {{ user_data }}</p>
-    <!-- Add more HTML content as needed -->
-</body>
-</html>
+<div class="bg-image">
+    <style>
+        body, html {
+        margin: 0;
+        padding: 0;
+        
+    }
+    
+    .bg-image {
+            background-image: url('{% static "img/img-1.png" %}');
+            background-size: cover;
+            background-position: center;
+            height: 90vh; /* Set the height of the container to the viewport height */
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: white;
+            display: flex;
+            justify-content: flex-start; /* Align content to the left */
+            align-items: center;
+            
+            
+    }
 
+    
+    
+    </style>
 </div>
+
 
 {% endblock content %}

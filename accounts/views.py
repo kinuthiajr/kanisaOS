@@ -67,7 +67,8 @@ def deletemember(request,record_id):
     return render(request, 'accounts/delete.html', {'record': record,'member_form':member_form})
 
 
-def editspouse(request,record_id):
+def editspouse(request,record_id): 
+    
     record = get_object_or_404(Spouse,pk=record_id)
     spouse_form = SpouseForm(instance=record)
     if request.method == 'POST':
