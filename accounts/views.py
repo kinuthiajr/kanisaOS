@@ -93,3 +93,6 @@ def deletespouse(request,record_id):
         record.delete()
         return redirect('spousedata')
     return render(request,'accounts/deletespouse.html',{'record':record,'spouse_form':spouse_form})
+
+
+

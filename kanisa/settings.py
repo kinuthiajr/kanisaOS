@@ -83,8 +83,13 @@ WSGI_APPLICATION = 'kanisa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kanisaos',
+        'USER':'postgres',
+        'PASSWORD':'saltandlight15-13-16',
+        'PORT':'5432',
+        'HOST':'localhost',
+        
     }
 }
 

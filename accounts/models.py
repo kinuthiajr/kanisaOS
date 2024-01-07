@@ -109,3 +109,23 @@ class Spouse(models.Model):
             return self.name
         else:
             return 'No Spouse'
+
+class Children(models.Model):
+    member_profile = models.ForeignKey(MemberProfile,on_delete=models.CASCADE, related_name='children')
+    date_of_birth = models.DateField(blank=True,null=True)
+    name = models.CharField(max_length=20,blank=True,null=True)
+    baptism_date = models.DateField(blank=True,null=True)
+    confirmation_date = models.DateField(blank=True,null=True)
+    
+    #deptartment choices
+    DEPT=[
+        ('sunday sch.','Sunday Sch'),
+        ('teens','Teens')
+    ]
+
+    dept = models.CharField(
+        max_length=11,choices=DEPT,blank=True,null=True
+    )
+
+    def __str__(self):
+        return self.name

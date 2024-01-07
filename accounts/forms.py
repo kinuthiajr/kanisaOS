@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import MemberProfile,Spouse
+from .models import MemberProfile,Spouse,Children
 
 class MemberProfileForm(forms.ModelForm):
     # Additional MemberProfile fields (add more as needed)
@@ -11,4 +11,9 @@ class MemberProfileForm(forms.ModelForm):
 class SpouseForm(forms.ModelForm):
     class Meta:
         model = Spouse
+        fields = '__all__'
+
+class ChildrenForm(forms.ModelForm):
+    class Meta:
+        model = Children
         fields = '__all__'
