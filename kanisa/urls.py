@@ -28,6 +28,7 @@ from accounts.views import (
     listmembers,
     listspouse,
     deletespouse,
+    child,
     
 )
 from users.views import(
@@ -52,6 +53,7 @@ urlpatterns = [
     path('memberdata/',listmembers,name='memberdata'),
     path('spousedata/',listspouse,name='spousedata'),
     path('deletespouse/<int:record_id>/',deletespouse,name='deletespouse'),
-    path('signout/',signout,name='signout')
+    path('signout/',signout,name='signout'),
+    path('child/',child,name='child'),
     
 ] 

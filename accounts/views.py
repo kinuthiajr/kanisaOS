@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import MemberProfileForm,SpouseForm
+from .forms import MemberProfileForm,SpouseForm,ChildrenForm
 from .models import *
 
 
@@ -94,5 +94,16 @@ def deletespouse(request,record_id):
         return redirect('spousedata')
     return render(request,'accounts/deletespouse.html',{'record':record,'spouse_form':spouse_form})
 
+# Child views
 
-
+def child(request):
+    if request.method =='POST':
+        child_form = ChildrenForm(request.POST)
+        if child_form.is_valid():
+            child_form.save()
+            return redirect('home')
+        else:
+            print(child_form.errors)
+    else:
+        child_form = ChildrenForm()
+    return render(request,'accounts/child.html',{'child_form':child_form})
