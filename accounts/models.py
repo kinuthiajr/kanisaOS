@@ -79,7 +79,7 @@ class MemberProfile(models.Model):
 
 # Spouse model
 class Spouse(models.Model):
-    name = models.CharField(max_length=100,blank=True,null=True)
+    name = models.CharField(max_length=100,blank=False,null=False)
     baptism_date = models.DateField(blank=True,null=True)
     confirmation_date = models.DateField(blank=True,null=True)
     phone_number = models.CharField(max_length = 15,blank=True,null=True)
@@ -113,7 +113,7 @@ class Spouse(models.Model):
 class Children(models.Model):
     member_profile = models.ForeignKey(MemberProfile,on_delete=models.CASCADE, related_name='children')
     date_of_birth = models.DateField(blank=True,null=True)
-    name = models.CharField(max_length=20,blank=True,null=True)
+    name = models.CharField(max_length=20,blank=False,null=False)
     baptism_date = models.DateField(blank=True,null=True)
     confirmation_date = models.DateField(blank=True,null=True)
     

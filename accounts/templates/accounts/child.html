@@ -58,10 +58,20 @@
                         </div>
                     
                         <div class="col-md-6">
+                            <label for="{{ child_form.member_profile.id_for_label }}">Department</label>
                             <select class="form-control" name="{{ child_form.dept.html_name}}">
                                 <option value="" {% if not child_form.dept.value %}selected{% endif %}>Department</option>
                                 {% for choice in child_form.fields.dept.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == child_form.dept.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ child_form.member_profile.id_for_label }}">Parent</label>
+                            <select class="form-control" name="{{ child_form.member_profile.html_name}}">
+                                <option value="" {% if not child_form.memember_profile.value %}selected{% endif %}>Parent</option>
+                                {% for choice in child_form.fields.member_profile.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == child_form.member_profile.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
                             </select>
                         </div>

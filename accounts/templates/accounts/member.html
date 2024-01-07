@@ -56,6 +56,7 @@
                             <input type="date" class="form-control" id="{{ member_form.baptism_date.id_for_label }}" name="{{ member_form.baptism_date.html_name }}"value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
                         </div>
                         <div class="col-md-6">
+                            <label for="service_attend">Service attend</label>
                             <select class="form-control" name="{{ member_form.service_attend.html_name}}">
                                 <option value="" {% if not member_form.service_attend.value %}selected{% endif %}>Service Attend</option>
                                 {% for choice in member_form.fields.service_attend.choices %}
@@ -64,6 +65,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="communicant">Communicant</label>
                             <select class="form-control" name="{{ member_form.communicant.html_name}}">
                                 <option value="" {% if not member_form.communicant.value %}selected{% endif %}>Communicant</option>
                                 {% for choice in member_form.fields.communicant.choices %}
@@ -72,6 +74,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="cell_group">Cell group</label>
                             <select class="form-control" name="{{ member_form.cell_group.html_name }}">
                                 <option value="" {% if not member_form.cell_group.value %}selected{% endif %}>Cell group</option>
                                 {% for choice in member_form.fields.cell_group.choices %}
@@ -80,6 +83,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="marital status">Marital status</label>
                             <select class="form-control" name="{{ member_form.marital_status.html_name }}">
                                 <option value="" {% if not member_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
                                 {% for choice in member_form.fields.marital_status.choices %}
