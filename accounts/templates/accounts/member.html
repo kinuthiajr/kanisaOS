@@ -95,7 +95,7 @@
                         <div class="col-md-6">
                             <label for="{{ member_form.spouse.id_for_label }}">Spouse</label>
                             <select class="form-control" name="{{ member_form.spouse.html_name }}" id="{{ member_form.spouse.id_for_label }}">
-                                <option value="" {% if not member_form.spouse.value %}selected{% endif %}>---Select Spouse---</option>
+                                <option value="" {% if not member_form.spouse.value %}selected{% endif %}>Select Spouse</option>
                                 {% for spouse in member_form.fields.spouse.queryset %}
                                     <option value="{{ spouse.id }}" {% if spouse.id == member_form.spouse.value %}selected{% endif %}>{{ spouse.name }}</option>
                                 {% endfor %}

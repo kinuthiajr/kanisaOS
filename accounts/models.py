@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 # member model
 
 class MemberProfile(models.Model):

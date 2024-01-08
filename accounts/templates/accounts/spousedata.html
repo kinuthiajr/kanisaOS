@@ -22,6 +22,7 @@
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Confirmation Date</th>
@@ -36,8 +37,8 @@
             <tbody>
                 {% for spouse in spouse %}
                 <tr>
-                    <td><a href="{% url 'editspouse' spouse.id %}">{{ spouse.name}}</a></td>
-                    
+                    <td><a href="{% url 'editspouse' spouse.id %}">{{ spouse.id}}</a></td>
+                    <td>{{ spouse.name}}</td>
                     <td>{{ spouse.phone_number }}</td>
                     <td>{{ spouse.confirmation_date }}</td>
                     <td>{{ spouse.baptism_date }}</td>

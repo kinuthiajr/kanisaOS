@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ member.name }}</h1>
+<!-- Display member profile details -->
+
+<h2>Children:</h2>
+<ul>
+    {% for child in children %}
+        <li><a href="{% url 'editchild' record_id=child.id %}" >{{child.name }}</a></li>
+        <li>{{ child.date_of_birth}}</li>
+        <li>{{ child.confirmation_date}}</li>
+        <li>{{ child.dept}}</li>
+        
+        <!-- Display other child details if needed -->
+    {% endfor %}
+</ul>
+
+{% endblock content %}

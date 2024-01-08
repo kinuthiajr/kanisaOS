@@ -1,5 +1,7 @@
+from typing import Any
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import MemberProfileForm,SpouseForm,ChildrenForm
+from django.views.generic import DetailView
 from .models import *
 
 
@@ -49,7 +51,6 @@ def spousetabular(request):
 def edit(request, record_id):
     record = get_object_or_404(MemberProfile, pk=record_id)
     member_form = MemberProfileForm(instance=record)
-
     if request.method == 'POST':
         member_form = MemberProfileForm(request.POST, instance=record)
         if member_form.is_valid():
@@ -68,7 +69,6 @@ def deletemember(request,record_id):
 
 
 def editspouse(request,record_id): 
-    
     record = get_object_or_404(Spouse,pk=record_id)
     spouse_form = SpouseForm(instance=record)
     if request.method == 'POST':
@@ -94,6 +94,20 @@ def deletespouse(request,record_id):
         return redirect('spousedata')
     return render(request,'accounts/deletespouse.html',{'record':record,'spouse_form':spouse_form})
 
+
+class MemberProfileChildview(DetailView):
+    model = MemberProfile
+    template_name = 'accounts/memberdetails.html'
+    context_object_name = 'member'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        member = self.get_object()
+        children = member.children.all()
+        context['children'] = children
+        return context
+
+
 # Child views
 
 def child(request):
@@ -107,3 +121,17 @@ def child(request):
     else:
         child_form = ChildrenForm()
     return render(request,'accounts/child.html',{'child_form':child_form})
+
+
+def editchild(request,record_id):
+    record = get_object_or_404(Children,pk=record_id)
+    child_form = ChildrenForm(instance=record)
+    if request.method =='POST':
+        child_form = ChildrenForm(request.POST,instance=record)
+        if child_form.is_valid():
+            child_form.save()
+            return redirect('memberdetails')
+    return render(request,'accounts/editchild.html',{'record':record,'child_form':child_form})
+
+
+
