@@ -3,19 +3,154 @@
 
 {% block content %}
 
-<h1>{{ member.name }}</h1>
-<!-- Display member profile details -->
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Children:</h2>
-<ul>
-    {% for child in children %}
-        <li><a href="{% url 'editchild' record_id=child.id %}" >{{child.name }}</a></li>
-        <li>{{ child.date_of_birth}}</li>
-        <li>{{ child.confirmation_date}}</li>
-        <li>{{ child.dept}}</li>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+         body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
         
-        <!-- Display other child details if needed -->
-    {% endfor %}
-</ul>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(128, 0, 128, 0.2); ;
+    padding: 55px 100px;  
+    width: 100%;
+    max-width: 1500px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+  }
 
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+</style>
+<style>
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
+      gap: 10px;
+      font-weight: bold;
+    }
+  
+    .info div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+    .info span[title] {
+    color: darkslateblue; 
+  }
+  .card-title {
+    text-align: center; /* Center align the text */
+    text-decoration: underline; /* Add underline */
+    color:purple; /* Set text color to grey */
+  }
+  </style>
+</head>
+    <body>
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card border-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Member Details</h5>
+                <ul class="info">
+                    <li>
+                        <span title="Name">Name:</span> {{ member.name }}
+                    </li>
+                    <li>
+                        <span title="Phone">Phone:</span> {{ member.phone_number}}
+                    </li>
+                    <li>
+                        <span title="Confirmation date">Confirmation date:</span> {{ member.confirmation_date}}
+                    </li>
+                    <li>
+                        <span title="Baptism date">Baptism date:</span> {{ member.baptism_date}}
+                    </li>
+                    <li>
+                        <span title="Spouse">Spouse:</span> {{ member.spouse}}
+                    </li>
+                    <li>
+                        <span title="Communicant">Communicant:</span> {{ member.communicant}}
+                    </li>
+                    <li>
+                        <span title="Cell group">Cell group:</span> {{ member.cell_group }}
+                    </li>
+                    <li>
+                        <span title="Marital status">Marital Status:</span> {{ member.marital_status }}
+                    </li>
+                    <li>
+                        <span title="Created At">Created At:</span> {{ member.created_at }}
+                    </li>
+                    
+                </ul>
+                        <h5 class="card-title">Children</h5>
+                        <style>
+                            .stl {
+                              list-style: none;
+                              padding: 0;
+                              margin: 0;
+                            }
+                          
+                            .stl li {
+                              display: flex;
+                              justify-content: space-between;
+                              border-bottom: 1px solid #ccc;
+                              padding: 10px 0;
+                            }
+                          
+                            .left-stl,
+                            .right-stl {
+                              width: 45%; 
+                            }
+                          
+                            .label {
+                              font-weight: bold;
+                              color: darkslateblue;
+                            }
+                          </style>
+                          
+                          
+                        {% for child in children %}
+                        <ul class="stl">
+                            <li>
+                                <span title="Name" class="label">Name:</span>
+                                <a href="{% url 'editchild' record_id=child.id %}">
+                                  {{ child.name }}
+                                </a>
+                            </li>
+                            <li>
+                            <span title="Created At" class="label">Date of birth:</span> {{ child.date_of_birth }}
+                            </li>
+                            <li>
+                            <span title="Created At" class="label">Confirmation date:</span> {{ child.confirmation_date }}
+                            </li>
+                            <li>
+                            <span title="Created At" class="label">Department:</span> {{ child.dept }}
+                            </li>
+                        </ul>
+                        {% endfor %}
+
+                
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
 {% endblock content %}
