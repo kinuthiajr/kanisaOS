@@ -41,7 +41,6 @@
                         <div class="col-md-6">
                             <label for="{{ spouse_form.name.id_for_label }}">Name</label>
                             <input type="text" class="form-control" id="{{ spouse_form.name.id_for_label }}" name="{{ spouse_form.name.html_name }}" value="{{ spouse_form.name.value }}" />
-
                         </div>
                         <div class="col-md-6">
                             <label for="phone_number">Phone</label>
@@ -56,6 +55,7 @@
                             <input type="date" class="form-control" id="{{ spouse_form.baptism_date.id_for_label }}" value="{{ spouse_form.baptism_date.value|date:"Y-m-d" }}" />
                         </div>
                         <div class="col-md-6">
+                            <label for="{{ spouse_form.confirmation_date.id_for_label }}">Service Attend</label>
                             <select class="form-control" name="{{ spouse_form.service_attend.html_name}}">
                                 <option value="" {% if not spouse_form.service_attend.value %}selected{% endif %}>Service Attend</option>
                                 {% for choice in spouse_form.fields.service_attend.choices %}
@@ -64,6 +64,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="{{ spouse_form.confirmation_date.id_for_label }}">Communicant</label>
                             <select class="form-control" name="{{ spouse_form.communicant.html_name}}">
                                 <option value="" {% if not spouse_form.communicant.value %}selected{% endif %}>Communicant</option>
                                 {% for choice in spouse_form.fields.communicant.choices %}
@@ -72,6 +73,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="{{ spouse_form.confirmation_date.id_for_label }}">Cell group</label>
                             <select class="form-control" name="{{ spouse_form.cell_group.html_name }}">
                                 <option value="" {% if not spouse_form.cell_group.value %}selected{% endif %}>Cell group</option>
                                 {% for choice in spouse_form.fields.cell_group.choices %}
@@ -80,6 +82,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label for="{{ spouse_form.confirmation_date.id_for_label }}">Marital status</label>
                             <select class="form-control" name="{{ spouse_form.marital_status.html_name }}">
                                 <option value="" {% if not spouse_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
                                 {% for choice in spouse_form.fields.marital_status.choices %}

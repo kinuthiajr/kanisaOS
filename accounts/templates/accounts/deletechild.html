@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+        form{
+            padding-top: 100px;
+            
+            padding: 15px;
+        }
+        .form-child{
+            margin: 0 auto;
+            max-width: 400px;
+            
+        }
+        .form-child h2{
+            text-align: center;
+
+        }
+        .form-control{
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+    <body>
+        <div class="container">
+            <form class="form-child" method="post">
+                {% csrf_token %}
+                <h2>Delete Child Form</h2>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="{{ child_form.name.id_for_label }}">Name</label>
+                            <input type="text" class="form-control" id="{{ child_form.name.id_for_label }}" name="{{ child_form.name.html_name }}" value="{{ child_form.name.value }}" />
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ child_form.date_of_birth.id_for_label }}">Date of Birth</label>
+                            <input type="date" class="form-control" id="{{ child_form.date_of_birth.id_for_label }}" name="{{ child_form.date_of_birth.html_name }}" value="{{ child_form.date_of_birth.value|date:"Y-m-d" }}" />
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="{{ child_form.baptism_date.id_for_label }}">Baptism Date</label>
+                            <input type="date" class="form-control" id="{{ child_form.baptism_date.id_for_label }}" name="{{ child_form.baptism_date.html_name }}" value="{{ child_form.baptism_date.value|date:"Y-m-d" }}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ child_form.confirmation_date.id_for_label }}">Confirmation Date</label>
+                            <input type="date" class="form-control" id="{{ child_form.confirmation_date.id_for_label }}" name="{{ child_form.confirmation_date.html_name }}" value="{{ child_form.confirmation_date.value|date:"Y-m-d" }}" />
+                        </div>
+                    
+                        <div class="col-md-6">
+                            <label for="{{ child_form.member_profile.id_for_label }}">Department</label>
+                            <select class="form-control" name="{{ child_form.dept.html_name}}">
+                                <option value="" {% if not child_form.dept.value %}selected{% endif %}>Department</option>
+                                {% for choice in child_form.fields.dept.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == child_form.dept.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ child_form.member_profile.id_for_label }}">Parent</label>
+                            <select class="form-control" name="{{ child_form.member_profile.html_name}}">
+                                <option value="" {% if not child_form.memember_profile.value %}selected{% endif %}>Parent</option>
+                                {% for choice in child_form.fields.member_profile.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == child_form.member_profile.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Delete" class="btn btn-danger btn-block">
+                        <a href="/memberdetails" class="btn btn-secondary btn-block">Cancel</a>
+                    </div>
+                    
+                </div>
+
+            </form>
+
+        </div>
+    </body>
+</html>
+{% endblock content %}

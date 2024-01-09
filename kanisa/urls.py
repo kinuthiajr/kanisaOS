@@ -31,6 +31,8 @@ from accounts.views import (
     child,
     MemberProfileChildview,
     editchild,
+    deletechild,
+    listchild,
     
 )
 from users.views import(
@@ -58,6 +60,8 @@ urlpatterns = [
     path('signout/',signout,name='signout'),
     path('child/',child,name='child'),
     path('memberdetails/<int:pk>/',MemberProfileChildview.as_view(),name='memberdetails'),
-    path('editchild/<int:record_id>/',editchild,name='editchild')
+    path('editchild/<int:record_id>/',editchild,name='editchild'),
+    path('deletechild/<int:record_id>/',deletechild,name='deletechild'),
+    path('childrendata/',listchild,name='childrendata')
     
 ] 

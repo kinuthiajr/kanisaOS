@@ -55,9 +55,9 @@
     color: darkslateblue; 
   }
   .card-title {
-    text-align: center; /* Center align the text */
-    text-decoration: underline; /* Add underline */
-    color:purple; /* Set text color to grey */
+    text-align: center; 
+    text-decoration: underline; 
+    color:purple;
   }
   </style>
 </head>
@@ -129,18 +129,18 @@
                         <ul class="stl">
                             <li>
                                 <span title="Name" class="label">Name:</span>
-                                <a href="{% url 'editchild' record_id=child.id %}">
+                                <a href="{% url 'editchild' record_id=child.id%}">
                                   {{ child.name }}
                                 </a>
                             </li>
                             <li>
-                            <span title="Created At" class="label">Date of birth:</span> {{ child.date_of_birth }}
+                            <span title="Date of birth" class="label">Date of birth:</span> {{ child.date_of_birth }}
                             </li>
                             <li>
-                            <span title="Created At" class="label">Confirmation date:</span> {{ child.confirmation_date }}
+                            <span title="Confirmation date" class="label">Confirmation date:</span> {{ child.confirmation_date }}
                             </li>
                             <li>
-                            <span title="Created At" class="label">Department:</span> {{ child.dept }}
+                            <span title="Department" class="label">Department:</span> {{ child.dept }}
                             </li>
                         </ul>
                         {% endfor %}

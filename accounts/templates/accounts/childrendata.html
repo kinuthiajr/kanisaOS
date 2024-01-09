@@ -23,32 +23,21 @@
                 <tr>
                     <th>id</th>
                     <th>Name</th>
-                    <th>Phone</th>
+                    <th>Date of Birth</th>
                     <th>Confirmation Date</th>
                     <th>Baptism Date</th>
-                    <th>Spouse</th>
-                    <th>Communicant</th>
-                    <th>Cell Group</th>
-                    <th>Marital Status</th>
-                    <th>Created At</th>
-                    <th>Delete</th>
-                    
+                    <th>Delete</th>                
                 </tr>
             </thead>
             <tbody>
-                {% for member in members %}
+                {% for child in children %}
                 <tr>
-                    <td><a href="{% url 'edit' member.id %}">{{ member.id}}</a></td>
-                    <td><a href="{% url 'memberdetails' pk=member.pk %}">{{ member.name }}</a></td>
-                    <td>{{ member.phone_number }}</td>
-                    <td>{{ member.confirmation_date }}</td>
-                    <td>{{ member.baptism_date }}</td>
-                    <td>{{ member.spouse}} </td>
-                    <td>{{ member.communicant }}</td>
-                    <td>{{ member.cell_group}}</td>
-                    <td>{{ member.marital_status}}</td>
-                    <td>{{ member.created_at}}</td>
-                    <td><a href="{% url 'delete' member.id %}">Delete</a></td>     
+                    <td><a href="{% url 'editchild' child.id %}">{{ child.id}}</a></td>
+                    <td>{{ child.name }}</td>
+                    <td>{{ child.date_of_birth }}</td>
+                    <td>{{ child.confirmation_date }}</td>
+                    <td>{{ child.baptism_date }}</td>
+                    <td><a href="{% url 'deletechild' child.id %}">Delete</a></td>     
                 </tr>
                 {% endfor %}
             </tbody>

@@ -20,12 +20,10 @@ def spouse(request):
             print(spouse_form.errors)  
     else:
         spouse_form = SpouseForm()
-
     return render(request, 'accounts/spouse.html', {'spouse_form': spouse_form})
 
 
 def member(request):
-
     if request.method == 'POST':
         member_form =MemberProfileForm(request.POST)
         if member_form.is_valid():
@@ -35,7 +33,6 @@ def member(request):
             print(member_form.errors)
     else:
         member_form = MemberProfileForm()
-        
     return render(request,'accounts/member.html',{'member_form':member_form})
 
 
@@ -115,7 +112,7 @@ def child(request):
         child_form = ChildrenForm(request.POST)
         if child_form.is_valid():
             child_form.save()
-            return redirect('home')
+            return redirect('memberdata')
         else:
             print(child_form.errors)
     else:
@@ -130,8 +127,17 @@ def editchild(request,record_id):
         child_form = ChildrenForm(request.POST,instance=record)
         if child_form.is_valid():
             child_form.save()
-            return redirect('memberdetails')
+            return redirect('memberdata')
     return render(request,'accounts/editchild.html',{'record':record,'child_form':child_form})
 
+def deletechild(request,record_id):
+    record = get_object_or_404(Children,pk=record_id)
+    child_form = ChildrenForm(instance=record)
+    if request.method == 'POST':
+        record.delete()
+        return redirect('childrendata')
+    return render(request,'accounts/deletechild.html',{'child_form':child_form,'record':record})
 
-
+def listchild(request):
+    children= Children.objects.all()
+    return render(request,'accounts/childrendata.html',{'children':children})
