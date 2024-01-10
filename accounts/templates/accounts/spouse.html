@@ -28,14 +28,19 @@
         .form-control{
             margin-bottom: 10px;
         }
-
+        .card-title {
+    text-align: center; 
+    text-decoration: underline; 
+    color:purple;
+    padding-top: 20px;
+  }
     </style>
 </head>
     <body>
         <div class="container">
             <form class="form-spouse" method="post">
                 {% csrf_token %}
-                <h2>Spouse Form</h2>
+                <h4 class="card-title">Spouse Form</h4>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">

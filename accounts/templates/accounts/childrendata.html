@@ -14,36 +14,45 @@
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="{% static 'script.js' %}"></script>
-    
+    <style>
+        .card-title {
+    text-align: center; 
+    text-decoration: underline; 
+    color:purple;
+    padding-top: 20px;
+  }
+    </style>
 </head>
 <body>
+    <h4 class="card-title">Children Profile </h4>
     <div class="container pt-3" >
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Date of Birth</th>
                     <th>Confirmation Date</th>
                     <th>Baptism Date</th>
+                    <th>Department<th>
                     <th>Delete</th>                
                 </tr>
             </thead>
             <tbody>
                 {% for child in children %}
                 <tr>
-                    <td><a href="{% url 'editchild' child.id %}">{{ child.id}}</a></td>
-                    <td>{{ child.name }}</td>
+                    <td>{{ child.id }}</td>
+                    <td><a href="{% url 'editchild' child.id %}">{{ child.name }}</a></td>           
                     <td>{{ child.date_of_birth }}</td>
                     <td>{{ child.confirmation_date }}</td>
                     <td>{{ child.baptism_date }}</td>
+                    <td>{{ child.dept}}</td>
                     <td><a href="{% url 'deletechild' child.id %}">Delete</a></td>     
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div>
-   
+    </div>   
 </body>
 </html>
 {% endblock content %}

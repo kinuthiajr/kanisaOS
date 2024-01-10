@@ -15,14 +15,22 @@
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="{% static 'script.js' %}"></script>
-    
+    <style>
+        .card-title {
+    text-align: center; 
+    text-decoration: underline; 
+    color:purple;
+    padding-top: 20px;
+  }
+    </style>
 </head>
 <body>
+    <h4 class="card-title"> Spouse Profile </h4>
     <div class="container pt-3" >
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Confirmation Date</th>
@@ -37,8 +45,8 @@
             <tbody>
                 {% for spouse in spouse %}
                 <tr>
-                    <td><a href="{% url 'editspouse' spouse.id %}">{{ spouse.id}}</a></td>
-                    <td>{{ spouse.name}}</td>
+                    <td>{{ spouse.id}}</td>
+                    <td><a href="{% url 'editspouse' spouse.id %}">{{ spouse.name}}</a></td>
                     <td>{{ spouse.phone_number }}</td>
                     <td>{{ spouse.confirmation_date }}</td>
                     <td>{{ spouse.baptism_date }}</td>
