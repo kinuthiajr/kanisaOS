@@ -57,8 +57,8 @@
                             <input type="date" class="form-control" id="{{ spouse_form.confirmation_date.id_for_label }}" name="{{ spouse_form.confirmation_date.html_name }}" value="{{ spouse_form.confirmation_date.value|date:"Y-m-d" }}" />
                         </div>
                         <div class="col-md-6">
-                            <label for="confirmation_date">Baptism Date</label>
-                            <input type="date" class="form-control" id="{{ spouse_form.baptism_date.id_for_label }}" value="{{ spouse_form.baptism_date.value|date:"Y-m-d" }}" />
+                            <label for="{{ spouse_form.baptism_date.id_for_label }}">Baptism Date</label>
+                            <input type="date" class="form-control" id="{{ spouse_form.baptism_date.id_for_label }}" name="{{ spouse_form.baptism_date.html_name}}" value="{{ spouse_form.baptism_date.value|date:"Y-m-d" }}" />
                         </div>
                         <div class="col-md-6">
                             <label for="service_attend">Service Attend</label>

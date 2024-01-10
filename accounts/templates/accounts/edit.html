@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="confirmation_date">Baptism Date</label>
-                            <input type="date" class="form-control" id="{{ member_form.baptism_date.id_for_label }}" value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
+                            <input type="date" class="form-control" id="{{ member_form.baptism_date.id_for_label }}" name="{{ member_form.baptism_date.html_name}}"  value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
                         </div>
                         <div class="col-md-6">
                             <label for="confirmation_date">Service Attend</label>
