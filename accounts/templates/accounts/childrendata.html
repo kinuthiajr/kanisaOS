@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
@@ -47,7 +48,10 @@
                     <td>{{ child.confirmation_date }}</td>
                     <td>{{ child.baptism_date }}</td>
                     <td>{{ child.dept}}</td>
-                    <td><a href="{% url 'deletechild' child.id %}">Delete</a></td>     
+                    <td><a href="{% url 'deletechild' child.id %}">
+                        <i class="fas fa-trash-alt" style="color: red;"></i>
+                    </a>
+                    </td>     
                 </tr>
                 {% endfor %}
             </tbody>
