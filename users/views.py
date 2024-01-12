@@ -50,7 +50,7 @@ def sign_in(request, **kwargs):
                 print("User logged in successfully.")
                 return redirect('member')
         else:
-            messages.error(request, 'Invalid username or password. Please try again.')
+            messages.error(request, 'Invalid email or password. Please try again!')
             print(f"Form errors: {form.errors}")
     
     else:

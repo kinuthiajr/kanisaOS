@@ -1,5 +1,5 @@
-from typing import Any
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib import messages
 from .forms import MemberProfileForm,SpouseForm,ChildrenForm
 from django.views.generic import DetailView
 from .models import *
@@ -15,6 +15,7 @@ def spouse(request):
         spouse_form = SpouseForm(request.POST)
         if spouse_form.is_valid():
             spouse_form.save()
+            messages.success(request,'Spouse successfully submitted!',extra_tags='spouse')
             return redirect('spousedata')  
         else:
             print(spouse_form.errors)  
@@ -28,13 +29,13 @@ def member(request):
         member_form =MemberProfileForm(request.POST)
         if member_form.is_valid():
             member_form.save()
+            messages.success(request,'Member successfully submitted!',extra_tags='member')
             return redirect('memberdata')
         else:
             print(member_form.errors)
     else:
         member_form = MemberProfileForm()
     return render(request,'accounts/member.html',{'member_form':member_form})
-
 
 def tabular(request):
     members = MemberProfile.objects.all()
@@ -112,9 +113,11 @@ def child(request):
         child_form = ChildrenForm(request.POST)
         if child_form.is_valid():
             child_form.save()
-            return redirect('memberdata')
+            messages.success(request, "Child has been successfully added.",extra_tags='child')
+            return redirect('childrendata')
         else:
             print(child_form.errors)
+            messages.error(request, f"Error: {child_form.errors}")
     else:
         child_form = ChildrenForm()
     return render(request,'accounts/child.html',{'child_form':child_form})
@@ -127,7 +130,7 @@ def editchild(request,record_id):
         child_form = ChildrenForm(request.POST,instance=record)
         if child_form.is_valid():
             child_form.save()
-            return redirect('memberdata')
+            return redirect('childrendata')
     return render(request,'accounts/editchild.html',{'record':record,'child_form':child_form})
 
 def deletechild(request,record_id):

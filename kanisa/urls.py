@@ -33,7 +33,7 @@ from accounts.views import (
     editchild,
     deletechild,
     listchild,
-    
+   
 )
 from users.views import(
     register_view,
@@ -62,6 +62,6 @@ urlpatterns = [
     path('memberdetails/<int:pk>/',MemberProfileChildview.as_view(),name='memberdetails'),
     path('editchild/<int:record_id>/',editchild,name='editchild'),
     path('deletechild/<int:record_id>/',deletechild,name='deletechild'),
-    path('childrendata/',listchild,name='childrendata')
+    path('childrendata/',listchild,name='childrendata'),
     
 ] 

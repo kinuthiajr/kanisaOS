@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -22,10 +26,28 @@
     color:purple;
     padding-top: 20px;
   }
+   /* message css */
+  .centered-alert {
+    text-align: center;
+    background-color:lightgreen;
+    max-width: 50%;
+    margin:0 auto;
+}
+
     </style>
 </head>
 <body>
     <h4 class="card-title">Children Profile </h4>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success centered-alert" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="container pt-3" >
         <table id="example" class="table table-striped" style="width:100%">
             <thead>

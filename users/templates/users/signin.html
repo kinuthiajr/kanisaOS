@@ -23,9 +23,11 @@
 
             <!-- Display error messages -->
             {% if form.errors %}
+            {% for message in messages %}
                 <div class="alert alert-danger" role="alert">
-                Invalid email or password. Please try again.
+                {{ message }}
                 </div>
+            {% endfor %}
             {% endif %}
 
             <div class="mb-3">
