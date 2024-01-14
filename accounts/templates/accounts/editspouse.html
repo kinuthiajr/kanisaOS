@@ -8,22 +8,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Your Title Here</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style type="text/css">
         form{
-            padding-top: 100px;
-            
+            padding-top: 100px;    
             padding: 15px;
         }
         .form-spouse{
             margin: 0 auto;
-            max-width: 400px;
-            
+            max-width: 400px;    
         }
         .form-spouse h2{
             text-align: center;
-
         }
         .form-control{
             margin-bottom: 10px;
@@ -40,13 +39,11 @@
         <div class="container">
             <form class="form-spouse" method="post">
                 {% csrf_token %}
-                <h4 class="card-title">Update Spouse Form</h4>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="{{ spouse_form.name.id_for_label }}">Name</label>
                             <input type="text" class="form-control" id="{{ spouse_form.name.id_for_label }}" name="{{ spouse_form.name.html_name }}" value="{{ spouse_form.name.value }}" />
-
                         </div>
                         <div class="col-md-6">
                             <label for="phone_number">Phone</label>
@@ -94,15 +91,12 @@
                                 {% for choice in spouse_form.fields.marital_status.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
-                            </select>
-                            
+                            </select>    
                         </div>
-
                     </div>
                     <input type="submit" class="btn btn-primary btn-block" value="Submit" />     
                 </div>
             </form>
-
         </div>
     </body>
 </html>

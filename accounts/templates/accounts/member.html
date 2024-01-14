@@ -14,18 +14,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
         form{
-            padding-top: 100px;
-            
+            padding-top: 100px;    
             padding: 15px;
         }
         .form-spouse{
             margin: 0 auto;
-            max-width: 400px;
-            
+            max-width: 400px;   
         }
         .form-spouse h2{
             text-align: center;
-
         }
         .form-control{
             margin-bottom: 10px;
@@ -40,17 +37,21 @@
 </head>
     <body>
         <div class="container">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {% endfor %}
             <form class="form-spouse" method="post">
                 {% csrf_token %}
                 <h4 class="card-title">Member Form</h4>
+                {% if member_form.non_field_errors %}
+                {% for error in member_form.non_field_errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                {% for field in member_form %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                <strong>{{ field.label }}:</strong> {{ error }}
+                </div>
+                {% endfor %}
+                {% endfor %}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
