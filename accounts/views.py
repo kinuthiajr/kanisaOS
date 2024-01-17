@@ -23,20 +23,21 @@ def spouse(request):
         spouse_form = SpouseForm()
     return render(request, 'accounts/spouse.html', {'spouse_form': spouse_form})
 
-
 def member(request):
     if request.method == 'POST':
+        print(request.POST)
         member_form =MemberProfileForm(request.POST)
         if member_form.is_valid():
-            if member_form.cleaned_data['name'] not in [None,""]:
+            if 'name' in request.POST and request.POST['name'] != 'None':
                 member_form.save()
                 messages.success(request,'Member Successfully Submitted!',extra_tags='member')
                 return redirect('memberdata')
             else:
-                messages.error(request,'Name cannot be None!',extra_tags='member')
+                messages.error(request," Name is required",)
     else:
         member_form = MemberProfileForm()
     return render(request,'accounts/member.html',{'member_form':member_form})
+
 
 def tabular(request):
     members = MemberProfile.objects.all()
@@ -121,8 +122,7 @@ def child(request):
             messages.success(request, "Child has been successfully added.",extra_tags='child')
             return redirect('childrendata')
         else:
-            print(child_form.errors)
-            messages.error(request, f"Error: {child_form.errors}")
+            messages.error(request, "Parent/Member profile is required")
     else:
         child_form = ChildrenForm()
     return render(request,'accounts/child.html',{'child_form':child_form})

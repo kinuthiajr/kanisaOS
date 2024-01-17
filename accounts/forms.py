@@ -3,10 +3,10 @@ from django import forms
 from .models import MemberProfile,Spouse,Children
 
 class MemberProfileForm(forms.ModelForm):
-    # Additional MemberProfile fields (add more as needed)
     class Meta:
         model = MemberProfile
         fields = '__all__'
+        
 
 class SpouseForm(forms.ModelForm):
     class Meta:

@@ -45,13 +45,14 @@
                 <div class="alert alert-danger">{{ error }}</div>
                 {% endfor %}
                 {% endif %}
+
                 {% for field in member_form %}
                 {% for error in field.errors %}
                 <div class="alert alert-danger">
-                <strong>{{ field.label }}:</strong> {{ error }}
-                </div>
+                <strong>{{ field.label }}:</strong> {{ error }}</div>
                 {% endfor %}
                 {% endfor %}
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
