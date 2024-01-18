@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     #myapps
     'accounts',
-    'users'
+    'users',
+    'dashboard',
 ]
 
 AUTH_USER_MODEL = 'users.User'

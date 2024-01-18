@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from dashboard.views import (
+    no_sch_child,
+)
 from accounts.views import (
     home_screen,
     spouse,
@@ -63,5 +66,7 @@ urlpatterns = [
     path('editchild/<int:record_id>/',editchild,name='editchild'),
     path('deletechild/<int:record_id>/',deletechild,name='deletechild'),
     path('childrendata/',listchild,name='childrendata'),
+    # dashboards
+    path('countsundaysch/',no_sch_child,name='countsundaysch'),
     
 ] 
