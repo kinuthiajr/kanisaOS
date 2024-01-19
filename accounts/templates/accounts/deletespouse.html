@@ -93,12 +93,27 @@
                                 {% for choice in spouse_form.fields.marital_status.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
-                            </select>
-                            
+                            </select>              
                         </div>
-
-                    </div>
-                    
+                        <div class="col-md-6">
+                            <label for="{{ spouse_form.gender.id_for_label }}">Gender</label>
+                            <select class="form-control" name="{{ spouse_form.gender.html_name }}">
+                                <option value="" {% if not spouse_form.gender.value %}selected{% endif %}>Select Gender</option>
+                                {% for choice in spouse_form.fields.gender.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.gender.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>              
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ spouse_form.department.id_for_label }}">Dept</label>
+                            <select class="form-control" name="{{ spouse_form.department.html_name }}">
+                                <option value="" {% if not spouse_form.department.value %}selected{% endif %}>Select Dept</option>
+                                {% for choice in spouse_form.fields.department.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.department.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>              
+                        </div>
+                    </div>    
                 </div>
                 <div>
                     <input type="submit" value="Delete" class="btn btn-danger btn-block">

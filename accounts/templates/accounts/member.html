@@ -116,6 +116,24 @@
                                 {% endfor %}
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label for="{{ member_form.gender.id_for_label }}">Gender</label>
+                            <select class="form-control" name="{{ member_form.gender.html_name }}" id="{{ member_form.gender.id_for_label }}">
+                                <option value="" {% if not member_form.gender.value %}selected{% endif %}>Select Gender</option>
+                                {% for choice in member_form.fields.gender.choices %}
+                                    <option value="{{ spouse.id }}" {% if spouse.id == member_form.gender.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ member_form.department.id_for_label }}">Dept</label>
+                            <select class="form-control" name="{{ member_form.department.html_name }}" id="{{ member_form.department.id_for_label }}">
+                                <option value="" {% if not member_form.department.value %}selected{% endif %}>Select Dept</option>
+                                {% for choice in member_form.fields.department.choices %}
+                                    <option value="{{ spouse.id }}" {% if spouse.id == member_form.department.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
                     <input type="submit" class="btn btn-success btn-block" value="Submit" />
                 </div>

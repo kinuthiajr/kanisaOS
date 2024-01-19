@@ -39,6 +39,7 @@
         <div class="container">
             <form class="form-spouse" method="post">
                 {% csrf_token %}
+                <h4 class="card-title">Update Spouse Form</h4>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
@@ -90,6 +91,24 @@
                                 <option value="" {% if not spouse_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
                                 {% for choice in spouse_form.fields.marital_status.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>    
+                        </div>
+                        <div class="col-md-6">
+                            <label for="marital_status">Gender</label>
+                            <select class="form-control" name="{{ spouse_form.gender.html_name }}">
+                                <option value="" {% if not spouse_form.gender.value %}selected{% endif %}>Select Gender</option>
+                                {% for choice in spouse_form.fields.gender.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.gender.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>    
+                        </div>
+                        <div class="col-md-6">
+                            <label for="marital_status">Dept</label>
+                            <select class="form-control" name="{{ spouse_form.department.html_name }}">
+                                <option value="" {% if not spouse_form.department.value %}selected{% endif %}>Select Dept</option>
+                                {% for choice in spouse_form.fields.department.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.department.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
                             </select>    
                         </div>

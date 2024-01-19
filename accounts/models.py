@@ -8,8 +8,6 @@ class MemberProfile(models.Model):
     baptism_date = models.DateField(blank=True,null=True)
     confirmation_date = models.DateField(blank=True,null=True)
     spouse = models.OneToOneField('Spouse', on_delete=models.CASCADE, blank=True, null=True)
-
-
     # marital choices
     MARITAL_STATUS_CHOICES =[
         ('married','Married'),
@@ -67,8 +65,33 @@ class MemberProfile(models.Model):
         default='judea',
         blank=True,
         null=True,
-    )  
+    )
 
+    #gender choice
+    GENDER = [
+        ('male','Male'),
+        ('female','Female')
+    ]
+    gender = models.CharField(
+        max_length = 6,
+        choices = GENDER,
+        blank = True,
+        null = True,
+        
+    )
+    DEPARTMENT = [
+        ('kama','Kama'),
+        ('MoU','MOU'),
+        ('choir','Choir'),
+        ('kayo','Kayo'),
+    ]
+    department = models.CharField(
+        max_length =5,
+        choices = DEPARTMENT,
+        blank=True,
+        null=True,
+
+    )
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -99,8 +122,31 @@ class Spouse(models.Model):
         blank=True,
         null=True,
     )
-    
-    #created_at = models.DateField(auto_now_add=True)
+    #gender choice
+    GENDER = [
+        ('male','Male'),
+        ('female','Female')
+    ]
+    gender = models.CharField(
+        max_length = 6,
+        choices = GENDER,
+        blank = True,
+        null = True,
+        
+    )
+    DEPARTMENT = [
+        ('kama','Kama'),
+        ('MoU','MOU'),
+        ('choir','Choir'),
+        ('kayo','Kayo'),
+    ]
+    department = models.CharField(
+        max_length =5,
+        choices = DEPARTMENT,
+        blank=True,
+        null=True,
+
+    )
     
     def __str__(self):
         if self.name:
@@ -123,6 +169,17 @@ class Children(models.Model):
 
     dept = models.CharField(
         max_length=11,choices=DEPT,blank=True,null=True
+    )
+    #gender choice
+    GENDER = [
+        ('male','Male'),
+        ('female','Female')
+    ]
+    gender = models.CharField(
+        max_length = 6,
+        choices = GENDER,
+        blank = True,
+        null = True,     
     )
 
     def __str__(self):

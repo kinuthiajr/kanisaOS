@@ -59,7 +59,8 @@
                     <th>Communicant</th>
                     <th>Cell Group</th>
                     <th>Marital Status</th>
-                    <th>Created At</th>
+                    <th>Dept</th>
+                    <th>Gender</th>
                     <th>Delete</th>
                     
                 </tr>
@@ -76,7 +77,8 @@
                     <td>{{ member.communicant }}</td>
                     <td>{{ member.cell_group}}</td>
                     <td>{{ member.marital_status}}</td>
-                    <td>{{ member.created_at}}</td>
+                    <td>{{ member.department}}</td>
+                    <td>{{ member.gender }}</td>
                     <td><a href="{% url 'delete' member.id %}">
                         <i class="fas fa-trash-alt" style="color: red;"></i>
                     </a></td>     

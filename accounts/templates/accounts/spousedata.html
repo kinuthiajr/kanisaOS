@@ -59,6 +59,8 @@
                     <th>Cell Group</th>
                     <th>Marital Status</th>
                     <th>Service Attend</th>
+                    <th>Dept</th>
+                    <th>Gender</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -74,6 +76,8 @@
                     <td>{{ spouse.cell_group}}</td>
                     <td>{{ spouse.marital_status}}</td>
                     <td>{{ spouse.service_attend}}</td>
+                    <td>{{ spouse.department }}</td>
+                    <td>{{ spouse.gender }}</td>
                     <td><a href="{% url 'deletespouse' spouse.id %}">
                         <i class="fas fa-trash-alt" style="color: red;"></i>
                     </a></td>

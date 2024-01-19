@@ -91,6 +91,15 @@
                                 {% endfor %}
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label for="{{ child_form.gender.id_for_label }}">Gender</label>
+                            <select class="form-control" name="{{ child_form.gender.html_name}}">
+                                <option value="" {% if not child_form.gender.value %}selected{% endif %}>Gender</option>
+                                {% for choice in child_form.fields.gender.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == child_form.gender.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
                     <input type="submit" class="btn btn-success btn-block" value="Submit" />           
                 </div>

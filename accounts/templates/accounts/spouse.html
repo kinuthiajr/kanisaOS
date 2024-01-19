@@ -12,18 +12,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style type="text/css">
         form{
-            padding-top: 100px;
-            
+            padding-top: 100px;       
             padding: 15px;
         }
         .form-spouse{
             margin: 0 auto;
-            max-width: 400px;
-            
+            max-width: 400px;   
         }
         .form-spouse h2{
             text-align: center;
-
         }
         .form-control{
             margin-bottom: 10px;
@@ -94,17 +91,30 @@
                                 {% for choice in spouse_form.fields.marital_status.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
-                            </select>
-                            
+                            </select>      
                         </div>
-
+                        <div class="col-md-6">
+                            <label for="marital status">Gender</label>
+                            <select class="form-control" name="{{ spouse_form.gender.html_name }}">
+                                <option value="" {% if not spouse_form.gender.value %}selected{% endif %}>Select Gender</option>
+                                {% for choice in spouse_form.fields.gender.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.gender.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>      
+                        </div>
+                        <div class="col-md-6">
+                            <label for="marital status">Dept</label>
+                            <select class="form-control" name="{{ spouse_form.department.html_name }}">
+                                <option value="" {% if not spouse_form.department.value %}selected{% endif %}>Select Gender</option>
+                                {% for choice in spouse_form.fields.department.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == spouse_form.department.value %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>      
+                        </div>
                     </div>
-                    <input type="submit" class="btn btn-success btn-block" value="Submit" />
-                    
+                    <input type="submit" class="btn btn-success btn-block" value="Submit" />       
                 </div>
-
             </form>
-
         </div>
     </body>
 </html>
