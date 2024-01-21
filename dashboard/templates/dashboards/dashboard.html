@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cell Group Aggregation</title>
+</head>
+<body>
+    <h1>Cell Group Aggregation</h1>
+
+    <ul>
+        {% for cell_group,total_count in cell_grp_agg.items %}
+            <li>{{ cell_group }}: {{ total_count }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Gender Aggregation</h1>
+
+    <ul>
+        {% for gender,total_count in gender_count.items %}
+            <li>{{ gender }}: {{ total_count }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Dept Aggregation</h1>
+
+    <ul>
+        {% for dept,total_count in dept_count.items %}
+            <li>{{ dept }}: {{ total_count }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Child Aggregation</h1>
+
+    <ul>
+        {% for child,total_count in child_count.items %}
+            <li>{{ child }}: {{ total_count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock content %}

@@ -16,7 +16,6 @@ class MemberProfile(models.Model):
         ('divorced','Divorced'),
         ('others','Others'),
     ]
-
     marital_status = models.CharField(
         max_length=10,
         choices = MARITAL_STATUS_CHOICES,
@@ -181,6 +180,5 @@ class Children(models.Model):
         blank = True,
         null = True,     
     )
-
     def __str__(self):
         return self.name
