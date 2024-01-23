@@ -25,7 +25,6 @@ def spouse(request):
 
 def member(request):
     if request.method == 'POST':
-        print(request.POST)
         member_form =MemberProfileForm(request.POST)
         if member_form.is_valid():
             if 'name' in request.POST and request.POST['name'] != 'None':

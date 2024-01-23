@@ -162,7 +162,7 @@ class Children(models.Model):
     
     #deptartment choices
     DEPT=[
-        ('sunday sch.','Sunday Sch'),
+        ('sunday_sch','Sunday_Sch'),
         ('teens','Teens')
     ]
 

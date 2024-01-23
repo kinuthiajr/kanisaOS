@@ -1,40 +1,192 @@
 {% extends 'base.html' %}
 
+
 {%  block content %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cell Group Aggregation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .card-text ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-text li {
+            flex-basis: 30%;
+            text-align: center;
+            margin: 10px;
+        }
+        .card{
+            box-shadow: 0 4px 8px 0 rgba(100, 2, 100, 0.137); ;
+     
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 50px;
+        }
+        .card-text li span {
+            display: block;
+            text-transform: uppercase;
+            color: black;
+        }
+        .card-title.text-center{
+            text-decoration: underline;
+            color: blueviolet;
+        }
+        .card-text li span{
+            color:darkblue;
+        }
+        li span.value{
+            color: black;
+            font-weight: bold;
+            font-size: 25px;
+        } 
+    </style>
 </head>
 <body>
-    <h1>Cell Group Aggregation</h1>
 
-    <ul>
-        {% for cell_group,total_count in cell_grp_agg.items %}
-            <li>{{ cell_group }}: {{ total_count }}</li>
-        {% endfor %}
-    </ul>
-    <h1>Gender Aggregation</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total Cell Group Members</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>
+                                <span>Bethlehem</span>
+                                <span class="value">{{ cell_grp_agg.bethlehem }}</span>
+                            </li>
+                            <li>
+                                <span>Judea</span>
+                                <span class="value">{{ cell_grp_agg.judea }}</span>
+                            </li>
+                            <li>
+                                <span>Jerusalem</span>
+                                <span class="value">{{ cell_grp_agg.jerusalem }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total Department Members</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>
+                                <span>Kama</span>
+                                <span class="value">{{ dept_count.kama }}</span>
+                            </li>
+                            <li>
+                                <span>Mothers' Union</span>
+                                <span class="value">{{ dept_count.MoU }}</span>
+                            </li>
+                            <li>
+                                <span>Kayo</span>
+                                <span class="value">{{ dept_count.kayo }}</span>
+                            </li>
+                            <li>
+                                <span>Choir</span>
+                                <span class="value">{{ dept_count.choir }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total Members by Gender</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>
+                                <span>Male</span>
+                                <span class="value">{{ gender_count.male }}</span>
+                            </li>
+                            <li>
+                                <span>Female</span>
+                                <span class="value">{{ gender_count.female }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <ul>
-        {% for gender,total_count in gender_count.items %}
-            <li>{{ gender }}: {{ total_count }}</li>
-        {% endfor %}
-    </ul>
-    <h1>Dept Aggregation</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total Children Department by Gender</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>
+                                <span>Male</span>
+                                <span class="value">{{ child_count.male }}</span>
+                            </li>
+                            <li>
+                                <span>Female</span>
+                                <span class="value">{{ child_count.female }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <ul>
-        {% for dept,total_count in dept_count.items %}
-            <li>{{ dept }}: {{ total_count }}</li>
-        {% endfor %}
-    </ul>
-    <h1>Child Aggregation</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total Children by Department</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>
+                                <span>Teens</span>
+                                <span class="value">{{ child_count.teens }}</span>
+                            </li>
+                            <li>
+                                <span>Sunday School</span>
+                                <span class="value">{{child_count.sunday_sch }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <ul>
-        {% for child,total_count in child_count.items %}
-            <li>{{ child }}: {{ total_count }}</li>
-        {% endfor %}
-    </ul>
 </body>
 </html>
+
 {% endblock content %}

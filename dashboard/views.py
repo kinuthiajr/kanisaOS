@@ -24,6 +24,7 @@ def dashboard(request):
     for gender in gender_spouse:
         gender_count[gender['gender']] = gender_count.get(gender['gender'],0)+gender['total']
 
+
     dept_member = MemberProfile.objects.values('department').annotate(total=Count('department'))
     dept_spouse = Spouse.objects.values('department').annotate(total=Count('department'))
     
