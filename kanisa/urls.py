@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 from dashboard.views import (
     dashboard,
@@ -42,6 +42,7 @@ from users.views import(
     register_view,
     sign_in,
     signout,
+    activate
 )
 
 
@@ -68,5 +69,8 @@ urlpatterns = [
     path('childrendata/',listchild,name='childrendata'),
     # dashboard
     path('dashboard/',dashboard,name='dashboard'),
+    #user verification
+    path('activate/<uidb64>/<token>/', activate, name='activate'),
+    
     
 ] 

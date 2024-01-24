@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    #email verification for registering users
+    'verify_email.apps.VerifyEmailConfig',
     #myapps
     'accounts',
     'users',
@@ -140,3 +141,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'), 
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =  'smtp.gmail.com'
+EMAIL_PORT = 587 
+EMAIL_HOST_USER = 'niajusteve@gmail.com'
+EMAIL_HOST_PASSWORD = 'keroslctrqcmdojr'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
