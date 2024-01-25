@@ -42,7 +42,9 @@ from users.views import(
     register_view,
     sign_in,
     signout,
-    activate
+    activate,
+    password_reset_request,
+    passwordResetConfirm,
 )
 
 
@@ -71,6 +73,7 @@ urlpatterns = [
     path('dashboard/',dashboard,name='dashboard'),
     #user verification
     path('activate/<uidb64>/<token>/', activate, name='activate'),
-    
+    path('password_reset/',password_reset_request,name='password_reset'),
+    path('reset/<uidb64>/<token>', passwordResetConfirm, name='password_reset_confirm')
     
 ] 
