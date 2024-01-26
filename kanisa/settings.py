@@ -37,16 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #email verification for registering users
-    'verify_email.apps.VerifyEmailConfig',
     #myapps
     'accounts',
     'users',
     'dashboard',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 AUTH_USER_MODEL = 'users.User'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 
 MIDDLEWARE = [

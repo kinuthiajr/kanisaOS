@@ -39,7 +39,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name ='email',unique=True,max_length=90)
     username = models.CharField(max_length=50,unique=True)
     date_joined = models.DateField(auto_now_add=True,verbose_name='date joined')
-    last_login = models.DateField(verbose_name='last login',auto_now=True)
+    last_login = models.DateTimeField(verbose_name='last login',auto_now=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
