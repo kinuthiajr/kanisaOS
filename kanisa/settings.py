@@ -143,6 +143,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST =  'smtp.gmail.com'
 EMAIL_PORT = 587 
@@ -150,3 +151,4 @@ EMAIL_HOST_USER = 'niajusteve@gmail.com'
 EMAIL_HOST_PASSWORD = 'keroslctrqcmdojr'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
+ACCEPTATION_URL ='http://127.0.0.1:8000/users/'

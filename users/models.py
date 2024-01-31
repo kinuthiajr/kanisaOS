@@ -2,7 +2,7 @@ from django.db import models
 
 #imports for creating and extending default user
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
-
+from django.utils.crypto import get_random_string
 
 # overide functions  frequently used
 # create user
@@ -63,3 +63,15 @@ class User(AbstractBaseUser):
     def soft_delete(self):
         self.is_active = False
         self.save()
+
+#Invitation
+class Invitation(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='invitations')
+    invitee_email = models.EmailField()
+    #code = models.CharField(max_length=20,unique=True)
+    is_accepted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.invitee_email
+    

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from . models import User
+from . models import User,Invitation
 
 # Register your models here.
 class AccountUsers(UserAdmin):
@@ -17,4 +17,5 @@ class AccountUsers(UserAdmin):
 
     mark_inactive.short_decription = 'Inactive user'
 
-admin.site.register(User,AccountUsers)
+admin.site.register(User,AccountUsers,)
+admin.site.register(Invitation)

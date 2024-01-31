@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm,PasswordResetForm,SetPasswordForm
-from users.models import User
+from users.models import User,Invitation
 from django.contrib.auth import get_user_model
 
 class RegistrationForm(UserCreationForm):
@@ -38,3 +38,8 @@ class SetPassword(SetPasswordForm):
     class Meta:
         model = get_user_model()
         fields = ['new_password1','new_password2']
+
+class InvitationForm(forms.ModelForm):
+    class Meta:
+        model = Invitation
+        fields = ['invitee_email']

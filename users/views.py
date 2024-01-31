@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-from users.forms import RegistrationForm,SetPassword,PasswordReset
-from users.forms import SigninForm
+from django.shortcuts import render, redirect,get_object_or_404
+from users.forms import InvitationForm,RegistrationForm
 from django.contrib.auth import login, authenticate,logout,get_user_model
-from . models import User
+from . models import User,Invitation
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.db.models.query_utils import Q
+
+#import utilities
+from .utilities import send_invitation
 
 # email verification for new users
 from django.template.loader import render_to_string
@@ -89,6 +90,28 @@ def sign_in(request, **kwargs):
         form = AuthenticationForm(request)
     return render(request, 'users/signin.html', {'form': form})
 
+#invite other users
+def invite(request):
+    team = get_object_or_404(User, pk=request.user.pk)
+
+    if request.method == 'POST':
+        form = InvitationForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['invitee_email']
+            invitation = Invitation.objects.filter(sender=team, invitee_email=email).first()
+            if not invitation:
+                invitation = Invitation.objects.create(sender=team, invitee_email=email)
+                messages.info(request, 'The user has been invited')
+                send_invitation(email, team)
+                return redirect('memberdata')
+            else:
+                messages.info(request, 'The user has been invited already')
+        else:
+            messages.error(request, 'Form is not valid. Please check the errors.')
+    else:
+        form = InvitationForm()
+
+    return render(request, 'users/invite.html', {'team': team, 'form': form})
 
 
 def signout(request):
