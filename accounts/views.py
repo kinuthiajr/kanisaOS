@@ -14,11 +14,12 @@ def spouse(request):
     if request.method == 'POST':
         spouse_form = SpouseForm(request.POST)
         if spouse_form.is_valid():
-            spouse_form.save()
-            messages.success(request,'Spouse successfully Submitted!',extra_tags='spouse')
-            return redirect('spousedata')  
-        else:
-            print(spouse_form.errors)  
+            if 'name' in request.POST and request.POST['name'] != 'None':
+                spouse_form.save()
+                messages.success(request,'Spouse successfully Submitted!',extra_tags='spouse')
+                return redirect('spousedata')  
+            else:
+                messages.error(request,'Spouse name is required')  
     else:
         spouse_form = SpouseForm()
     return render(request, 'accounts/spouse.html', {'spouse_form': spouse_form})
@@ -32,7 +33,7 @@ def member(request):
                 messages.success(request,'Member Successfully Submitted!',extra_tags='member')
                 return redirect('memberdata')
             else:
-                messages.error(request," Name is required",)
+                messages.error(request," Member name is required",)
     else:
         member_form = MemberProfileForm()
     return render(request,'accounts/member.html',{'member_form':member_form})

@@ -29,12 +29,27 @@
             margin-bottom: 10px;
         }
         .card-title {
-    text-align: center; 
-    text-decoration: underline; 
-    color:purple;
-    padding-top: 20px;
-  }
+        text-align: center; 
+        text-decoration: underline; 
+        color:purple;
+        padding-top: 20px;
+        }
+        .centered-alert {
+        text-align: center;
+        background-color:lightgreen;
+        margin:0 auto;
+        }
     </style>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success centered-alert" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    {% endfor %}
+    {% endif %}
 </head>
     <body>
         <div class="container">
