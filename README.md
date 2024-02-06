@@ -4,7 +4,7 @@ parisioners were baptised, communicant/not, confirmed/not, married/not various d
 
 **brief history** of how the project came to be. My local church got a new reverend and his first assignment was to register all members of the church afresh because the records that he currently 
 had did not reflect the number of members. He also wanted a system where the records would be stored as a soft copy, the available software is EasyWorship for keeping church records downside of 
-it its not possible to customise it. I volunteered to create the system and thats how KanisaOS
+it its not possible to customise it to suit your own needs. I volunteered to create the system and thats how KanisaOS was born.
 
 ### Design
 The requirements were straight forward security of the system, ability to update records and destroy records. The system needs to adapt to the needs of the church membership form finally 
