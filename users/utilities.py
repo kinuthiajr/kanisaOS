@@ -13,5 +13,3 @@ def send_invitation(to_email,team):
     msg = EmailMultiAlternatives(subject,text_context,from_email,[to_email])
     msg.attach_alternative(html_content,'text/html')
     msg.send()
-
-

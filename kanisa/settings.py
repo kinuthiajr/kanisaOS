@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kanisaos.azurewebsites.net','127.0.0.1:8000']
 
 
 # Application definition
@@ -53,6 +53,8 @@ AUTH_USER_MODEL = 'users.User'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
+# Add azure web app as trusted CRSF
+CRSF_TRUSTED_ORIGINS = ["kanisaos.azurewebsites.net"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'kanisa.urls'
@@ -90,13 +94,15 @@ WSGI_APPLICATION = 'kanisa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME'),
-        'USER':os.getenv('DB_USER'),
-        'PASSWORD':os.getenv('DB_PASSWORD'),
-        'PORT':os.getenv('DB_PORT'),
-        'HOST':os.getenv('DB_HOST'),
-        
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('dbname'),
+        'USER':os.getenv('user'),
+        'PASSWORD':os.getenv('password'),
+        'PORT':os.getenv('port'),
+        'HOST':os.getenv('host'),
+        'OPTIONS':{
+            'ssl':'require',
+        }
     }
 }
 
@@ -146,6 +152,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'), 
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

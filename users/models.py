@@ -68,7 +68,6 @@ class User(AbstractBaseUser):
 class Invitation(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='invitations')
     invitee_email = models.EmailField()
-    #code = models.CharField(max_length=20,unique=True)
     is_accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
