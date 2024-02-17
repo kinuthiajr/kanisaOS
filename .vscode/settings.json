@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9d90490d-3cf7-4f44-88f0-66c350d50cc8/resourceGroups/kanisa-app-resource/providers/Microsoft.Web/sites/kanisapp",
+    "appService.deploySubpath": "."
+}
