@@ -12,14 +12,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load environments variables 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-
+# railway deploy env variables
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -27,9 +29,8 @@ load_dotenv()
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*set-ovg(qhh558nx+&^be^*n4s$#93h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['kanisaos.azurewebsites.net','127.0.0.1:8000']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -88,22 +89,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kanisa.wsgi.application'
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+DATABASES = {
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('dbname'),
-        'USER':os.getenv('user'),
-        'PASSWORD':os.getenv('password'),
-        'HOST':os.getenv('host'),
-        'OPTIONS':{
-            'sslmode':'require',
-        }
-    }
-}
 
 
 # Password validation
