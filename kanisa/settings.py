@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','https://kanisaos.up.railway.app']
 
 
 # Application definition
@@ -55,7 +55,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 # Add azure web app as trusted CRSF
-CRSF_TRUSTED_ORIGINS = ["kanisaos.azurewebsites.net"]
+CRSF_TRUSTED_ORIGINS = ["kanisaos.up.railway.app"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
