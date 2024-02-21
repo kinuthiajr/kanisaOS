@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['localhost','https://kanisaos.up.railway.app']
+ALLOWED_HOSTS = ['https://kanisaos.up.railway.app']
 
 
 # Application definition
@@ -154,4 +154,4 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
-ACCEPTATION_URL ='http://127.0.0.1:8000/users/'
+ACCEPTATION_URL ='https://kanisaos.up.railway.app/users/'
