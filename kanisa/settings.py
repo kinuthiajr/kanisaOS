@@ -56,7 +56,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 # Add azure web app as trusted CRSF
-CSRF_TRUSTED_ORIGINS = ["kanisaos.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://kanisaos.up.railway.app"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
