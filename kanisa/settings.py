@@ -29,6 +29,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*set-ovg(qhh558nx+&^be^*n4s$#93h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG=True
 
 ALLOWED_HOSTS = ['https://kanisaos.up.railway.app']
 
