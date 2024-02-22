@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-*nh-_-+1utz2u_d#vn*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=True
 
-ALLOWED_HOSTS = ['https://kanisaos.up.railway.app']
+ALLOWED_HOSTS = ['kanisaos.up.railway.app']
 
 
 # Application definition
