@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from . models import User
+
 
 # Create your views here.
 
 def home(request):
     """ Landing page"""
-    return render(request,'kiongozi/index.html')
-
-#signup new user
-def signup(request):
-    return render(request,'kiongozi/signup.html')
+    return render(request,'kiongozi/home.html')
