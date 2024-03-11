@@ -20,7 +20,9 @@
                 <li class="cursor-pointer">Features</li>
                 <li class="cursor-pointer">price</li>
                 <li class="cursor-pointer">contacts</li>
-                <button type="submit" class="bg-bookmark-red text-white rounded-md px-7 py-3 uppercase">Login</button>
+                <a href="{% url 'account_login' %}">
+                    <button type="submit" class="bg-bookmark-red text-white rounded-md px-7 py-3 uppercase">Login</button>
+                </a>
             </ul>
         </nav>
     </header>
