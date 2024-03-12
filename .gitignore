@@ -2,6 +2,7 @@
 ack/
 *.log
 node_modules/
+*oauth.json
 
 # Ignore the SQLite database file
 db.sqlite3
