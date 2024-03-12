@@ -34,7 +34,7 @@
                     <hr class="border-grey">
                 </div>
                 <div class="text-center mt-2 text-sm" >
-                    <a href="{% provider_login_url 'google' %}">
+                    <a href="{% provider_login_url 'google' %}?next=/">
                         <button 
                             class="bg-bookmark-white rounded-md w-full mt-5 flex items-center justify-center text-sm py-2">
                             <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px">
@@ -46,7 +46,8 @@
                             Login with Google
                         </button>
                     </a>
-                    <p class="mt-5 text-xs border-b py-4">Forgot Password</p>
+
+                   <a href="{% url 'account_reset_password' %}"><p class="mt-5 text-xs border-b py-4">Forgot Password</p></a>
 
                 </div>
             </div>
