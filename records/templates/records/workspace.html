@@ -26,6 +26,11 @@
         <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
             <span class="text-[15px] ml-4 text-red rounded-2xl uppercase">Members</span>
         </div>
+        <a href="{% url 'account_logout' %}" class="p-2.5 flex flex-col items-center fixed bottom-0 rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
+            <img class="mt-4" src="{% static 'img/logout.svg' %}" >
+            <span class="text-[15px] ml-4 text-red rounded-2xl uppercase">Logout</span>
+        </a>
+        </div>
     </div>
 </body>
 </html>
