@@ -17,74 +17,75 @@
 <body>
     <!--------leftside fields---------->
     <div class="flex justify-center items-center h-screen bg-gray-50">
-        <div class="w-full max-w-lg mx-auto">
+        <div class="w-full max-w-lg mx-auto lg:w-1/2 ">
+            <h1 class="text-center mb-2">Member Form</h1>
             <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-wrap" method="post">
                 {% csrf_token %}
-                <div class="w-full flex flex-wrap -mx-3 mb-6">
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full flex flex-wrap -mx-3 mb-6 sm:flex-column">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.name.id_for_label }}">Name</label>
-                        <input type="text" class="form-control" id="{{ member_form.name.id_for_label }}" name="{{ member_form.name.html_name }}" value="{{ member_form.name.value }}" />
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ member_form.name.id_for_label }}" name="{{ member_form.name.html_name }}" value="{{ member_form.name.value }}" />
                     </div>
-                    <div class="w-1/2 px-3">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.phone.id_for_label }}">Phone</label>
-                        <input type="text" class="form-control" id="{{ member_form.phone.id_for_label }}" name="{{ member_form.phone.html_name }}" value="{{ member_form.phone.value }}" />
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ member_form.phone.id_for_label }}" name="{{ member_form.phone.html_name }}" value="{{ member_form.phone.value }}" />
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.confirmation_date.id_for_label }}">Confirmation</label>
-                        <input type="date" class="form-control" id="{{ member_form.confirmation_date.id_for_label }}" name="{{ member_form.confirmation_date.html_name }}" value="{{ member_form.confirmation_date.value|date:"Y-m-d" }}" />
+                        <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ member_form.confirmation_date.id_for_label }}" name="{{ member_form.confirmation_date.html_name }}" value="{{ member_form.confirmation_date.value|date:"Y-m-d" }}" />
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="confirmation_date">Baptism</label>
-                        <input type="date" class="form-control" id="{{ member_form.baptism_date.id_for_label }}" name="{{ member_form.baptism_date.html_name }}" value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
+                        <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ member_form.baptism_date.id_for_label }}" name="{{ member_form.baptism_date.html_name }}" value="{{ member_form.baptism_date.value|date:"Y-m-d" }}" />
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="service_attend">Service attends</label>
-                        <select class="form-control" name="{{ member_form.service_attends.html_name}}">
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.service_attends.html_name}}">
                             <option value="" {% if not member_form.service_attends.value %}selected{% endif %}>Service Attends</option>
                                 {% for choice in member_form.fields.service_attends.choices %}
                             <option value="{{ choice.0 }}" {% if choice.0 == member_form.service_attends.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
                         </select>
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="communicant">Communicant</label>
-                            <select class="form-control" name="{{ member_form.communicant.html_name}}">
+                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.communicant.html_name}}">
                                 <option value="" {% if not member_form.communicant.value %}selected{% endif %}>Communicant</option>
                                 {% for choice in member_form.fields.communicant.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == member_form.communicant.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
                             </select>
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="cell_group">Cell group</label>
-                        <select class="form-control" name="{{ member_form.cell_group.html_name }}">
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.cell_group.html_name }}">
                             <option value="" {% if not member_form.cell_group.value %}selected{% endif %}>Cell group</option>
                             {% for choice in member_form.fields.cell_group.choices %}
                                 <option value="{{ choice.0 }}" {% if choice.0 == member_form.cell_group.value %}selected{% endif %}>{{ choice.1 }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="marital status">Marital status</label>
-                            <select class="form-control" name="{{ member_form.marital_status.html_name }}">
+                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.marital_status.html_name }}">
                                 <option value="" {% if not member_form.marital_status.value %}selected{% endif %}>Select Marital Status</option>
                                 {% for choice in member_form.fields.marital_status.choices %}
                                     <option value="{{ choice.0 }}" {% if choice.0 == member_form.marital_status.value %}selected{% endif %}>{{ choice.1 }}</option>
                                 {% endfor %}
                             </select>
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.spouse.id_for_label }}">Spouse</label>
-                            <select class="form-control" name="{{ member_form.spouse.html_name }}" id="{{ member_form.spouse.id_for_label }}">
+                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.spouse.html_name }}" id="{{ member_form.spouse.id_for_label }}">
                                 <option value="" {% if not member_form.spouse.value %}selected{% endif %}>Select Spouse</option>
                                 {% for spouse in member_form.fields.spouse.queryset %}
                                     <option value="{{ spouse.id }}" {% if spouse.id == member_form.spouse.value %}selected{% endif %}>{{ spouse.name }}</option>
                                 {% endfor %}
                             </select>
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.gender.id_for_label }}">Gender</label>
-                        <select class="form-control" name="{{ member_form.gender.html_name }}" id="{{ member_form.gender.id_for_label }}">
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.gender.html_name }}" id="{{ member_form.gender.id_for_label }}">
                             <option value="" {% if not member_form.gender.value %}selected{% endif %}>Select Gender</option>
                             {% for value, label in member_form.fields.gender.choices %}
                                 <option value="{{ value }}" {% if member_form.gender.value == value %}selected{% endif %}>{{ label }}</option>
@@ -92,19 +93,17 @@
                         </select>
                         
                     </div>
-                    <div class="w-1/2 px-3 mb-6 md:mb-0">
-                        <label for="{{ member_form.department.id_for_label }}">Dept</label>
-                        <select class="form-control" name="{{ member_form.department.html_name }}" id="{{ member_form.department.id_for_label }}">
+                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
+                        <label for="{{ member_form.department.id_for_label }}">Department</label>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.department.html_name }}" id="{{ member_form.department.id_for_label }}">
                             <option value="" {% if not member_form.gender.value %}selected{% endif %}>Select Gender</option>
                             {% for value, label in member_form.fields.department.choices %}
                                 <option value="{{ value }}" {% if member_form.department.value == value %}selected{% endif %}>{{ label }}</option>
                             {% endfor %}
                         </select>
-                        
                     </div>
-                    
                 </div>
-                <!-- Add the rest of your fields in a similar manner -->
+                <!-- button -->
                 <div class="w-full px-3">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         Submit
