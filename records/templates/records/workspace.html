@@ -12,15 +12,15 @@
     {% tailwind_css %}
     <title>workspace</title>
 </head>
-<body class="bg-bookmark-grey font-Poppins">
+<body class="bg-bookmark-white-50 font-Poppins">
     <!------set nav configs------->
-    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-bookmark-white">
+    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[230px] overflow-y-auto text-center bg-bookmark-white">
         <div class="p-2.5 mt-1 flex items-center">
-            <img class="mt-4" src="{% static 'img/logoblack.png' %}" >
+            <img class="mt-1" src="{% static 'img/logoblack.png' %}" >
         </div>
         <hr class="my-2 text-grey-100 mt-3">
         <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
-            <span class="text-[15px] ml-4 text-red rounded-2xl uppercase">Members</span>
+            <a href="{% url 'memberform' %}" class="text-[15px] ml-4 text-red rounded-2xl uppercase">Members</a>
         </div>
         <hr class="my-2 text-grey-100 mt-3">
         <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
@@ -32,5 +32,7 @@
         </a>
         </div>
     </div>
+    {% block content %}
+    {% endblock content %}
 </body>
 </html>

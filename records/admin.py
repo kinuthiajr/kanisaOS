@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import MemberProfile, Spouse, Children
+
+admin.site.register(MemberProfile)
+admin.site.register(Spouse)
+admin.site.register(Children)
