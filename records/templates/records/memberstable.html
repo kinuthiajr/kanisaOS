@@ -1,0 +1,73 @@
+{% extends 'records/workspace.html'%}
+{% load static tailwind_tags %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referr" >
+    {% tailwind_css %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="{% static 'script.js' %}"></script>
+
+    <title>members</title>
+</head>
+<body>
+
+    <div class="px-20 pt-20 pb-8 justify-end flex flex-wrap" >
+        <table id="example" class="table table-striped lg:w-3/4 px-8 pt-6 pb-8 mb-4 flex flex-wrap" >
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Confirmation </th>
+                    <th>Baptism</th>
+                    <th>Spouse</th>
+                    <th>Communicant</th>
+                    <th>Cell Grp</th>
+                    <th>Marital</th>
+                    <th>Dept</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr>
+                    <td>{{ member.id}}</a></td>
+                    <td>{{ member.name }}</a></td>
+                    <td>{{ member.confirmation_date }}</td>
+                    <td>{{ member.baptism_date }}</td>
+                    <td>{{ member.spouse}} </td>
+                    <td>{{ member.communicant }}</td>
+                    <td>{{ member.cell_group}}</td>
+                    <td>{{ member.marital_status}}</td>
+                    <td>{{ member.department}}</td>
+                    <td>{{member.actions}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+   
+</body>
+</html>
+
+</body>
+{% endblock content %}
