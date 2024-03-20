@@ -32,7 +32,7 @@ def member_table(request):
     members = MemberProfile.objects.all()
     return render(request,'records/memberstable.html',{'members':members})
 
-def edit(request,record_id):
+def member_edit(request,record_id):
     """" Populates a form with the data from the database to update it """
     record = get_object_or_404(MemberProfile,pk=record_id)
     member_form = MemberProfileForm(instance=record)
@@ -45,12 +45,11 @@ def edit(request,record_id):
     return render(request,'records/memberupdate.html',{'record':record,'member_form':member_form})
 
 
-def erase(request,record_id):
+def member_erase(request,record_id):
     """ Discards a record """
     record = get_object_or_404(MemberProfile,pk=record_id)
     member_form = MemberProfileForm(instance=record)
     if request.method == 'POST':
-        print(request.method)
         member_form = MemberProfileForm(request.POST,instance=record)
         if member_form.is_valid():
             record.delete()
@@ -82,3 +81,18 @@ def spouse(request):
 def spouse_table(request):
     spouses = Spouse.objects.all()
     return render(request,'records/spousetable.html',{'spouses':spouses})
+
+
+def spouse_edit(request,record_id):
+    """ Populates spouse data to a form so for editing """
+    record = get_object_or_404(Spouse,pk=record_id)
+    spouse_form = SpouseForm(instance=record)
+    if request.method == 'POST':
+        
+        spouse_form = SpouseForm(request.POST,instance=record)
+        if spouse_form.is_valid():
+            spouse_form.save()
+            messages.success(request,'Successfully edited spouse')
+            return redirect('spousetable')
+    
+    return render(request,'records/spouseupdate.html',{'record':record,'spouse_form':spouse_form})
