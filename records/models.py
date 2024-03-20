@@ -110,6 +110,12 @@ class Spouse(models.Model):
     cell_group = models.CharField(max_length=10,choices=MemberProfile.CELL_GRPS,blank=True,null=True)
     created_at = models.DateField(auto_now_add=True)
 
+    DEPT = (
+        ['MoU','MoU'],['Choir','Choir']
+    )
+
+    department = models.CharField(max_length=6,choices=DEPT,blank=True,null=True)
+
     def __str__(self):
         return self.name
 

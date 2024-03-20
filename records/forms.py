@@ -26,7 +26,7 @@ class MemberProfileForm(forms.ModelForm):
 class SpouseForm(forms.ModelForm):
     class Meta:
         model = Spouse
-        fields = ['name', 'phone', 'baptism_date', 'confirmation_date', 'marital_status', 'gender', 'service_attends', 'communicant', 'cell_group',]
+        fields = ['name', 'phone', 'baptism_date', 'confirmation_date', 'marital_status', 'gender', 'service_attends', 'communicant', 'cell_group','department']
 
     # Form validation of the required fields
     def clean_name(self):

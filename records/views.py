@@ -42,4 +42,43 @@ def edit(request,record_id):
             member_form.save()
             messages.success(request,'Successfully updated member')
             return redirect('memberstable')
-    return render(request,'records/update.html',{'record':record,'member_form':member_form})
+    return render(request,'records/memberupdate.html',{'record':record,'member_form':member_form})
+
+
+def erase(request,record_id):
+    """ Discards a record """
+    record = get_object_or_404(MemberProfile,pk=record_id)
+    member_form = MemberProfileForm(instance=record)
+    if request.method == 'POST':
+        print(request.method)
+        member_form = MemberProfileForm(request.POST,instance=record)
+        if member_form.is_valid():
+            record.delete()
+            messages.success(request,'Successfully deleted member')
+            return redirect('memberstable')
+    return render(request,'records/memberdelete.html',{'record':record,'member_form':member_form})
+
+
+    # Spouse Views
+
+def spouse(request):
+    if request.method =="POST":
+        print(request.method)
+        spouse_form = SpouseForm(request.POST)
+        if spouse_form.is_valid():
+            spouse_form.save()
+            messages.success(request,'Spouse suceessfully submitted')
+            return redirect('spousetable')
+        else:
+            if 'name' in spouse_form.errors:
+                messages.error(request,'Name is required')
+            if 'gender' in spouse_form.errors:
+                messages.error(request,'Gender is required')
+    else:
+        spouse_form = SpouseForm()
+    return render(request,'records/spouseform.html',{'spouse_form':spouse_form})
+
+
+def spouse_table(request):
+    spouses = Spouse.objects.all()
+    return render(request,'records/spousetable.html',{'spouses':spouses})

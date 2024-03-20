@@ -96,7 +96,7 @@
                     <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ member_form.department.id_for_label }}">Department</label>
                         <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ member_form.department.html_name }}" id="{{ member_form.department.id_for_label }}">
-                            <option value="" {% if not member_form.gender.value %}selected{% endif %}>Select Gender</option>
+                            <option value="" {% if not member_form.gender.value %}selected{% endif %}>Select Dept</option>
                             {% for value, label in member_form.fields.department.choices %}
                                 <option value="{{ value }}" {% if member_form.department.value == value %}selected{% endif %}>{{ label }}</option>
                             {% endfor %}
@@ -106,7 +106,7 @@
                 <!-- button -->
                 <div class="w-full px-3">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        Submit
+                        Update
                     </button>
                 </div>
             </form>
