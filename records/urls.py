@@ -10,5 +10,5 @@ urlpatterns = [
     path('spouseform/',views.spouse,name='spouseform'),
     path('spousetable/',views.spouse_table,name='spousetable'),
     path('spouseupdate/<int:record_id>/',views.spouse_edit,name='spouseupdate'),
-
+    path('spousedelete/<int:record_id>/',views.spouse_erase,name='spousedelete'),
 ]

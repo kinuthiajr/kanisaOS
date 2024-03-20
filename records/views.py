@@ -88,11 +88,22 @@ def spouse_edit(request,record_id):
     record = get_object_or_404(Spouse,pk=record_id)
     spouse_form = SpouseForm(instance=record)
     if request.method == 'POST':
-        
         spouse_form = SpouseForm(request.POST,instance=record)
         if spouse_form.is_valid():
             spouse_form.save()
             messages.success(request,'Successfully edited spouse')
             return redirect('spousetable')
-    
     return render(request,'records/spouseupdate.html',{'record':record,'spouse_form':spouse_form})
+
+
+def spouse_erase(request,record_id):
+    """ Delete a record from the spouse table """
+    record = get_object_or_404(Spouse,pk=record_id)
+    spouse_form = SpouseForm(instance=record)
+    if request.method == 'POST':
+        spouse_form = SpouseForm(request.POST,instance=record)
+        if spouse_form.is_valid():
+            record.delete()
+            messages.success(request,'Successfully deleted spouse')
+            return redirect('spousetable')
+    return render(request,'records/spousedelete.html',{'record':record,'spouse_form':spouse_form})
