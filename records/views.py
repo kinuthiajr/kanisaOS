@@ -62,7 +62,6 @@ def member_erase(request,record_id):
 
 def spouse(request):
     if request.method =="POST":
-        print(request.method)
         spouse_form = SpouseForm(request.POST)
         if spouse_form.is_valid():
             spouse_form.save()
@@ -79,6 +78,7 @@ def spouse(request):
 
 
 def spouse_table(request):
+    """ Gathers objects from spouse table and represents it in a table """
     spouses = Spouse.objects.all()
     return render(request,'records/spousetable.html',{'spouses':spouses})
 
@@ -107,3 +107,28 @@ def spouse_erase(request,record_id):
             messages.success(request,'Successfully deleted spouse')
             return redirect('spousetable')
     return render(request,'records/spousedelete.html',{'record':record,'spouse_form':spouse_form})
+
+
+    # Children Views
+
+def children(request):
+    if request.method == 'POST':
+        print(request.POST)
+        child_form = ChildrenForm(request.POST)
+        if child_form.is_valid():
+            child_form.save()
+            messages.success(request,'Child successfully submitted')
+            return redirect('childtable')
+        else:
+            if 'name' in child_form.errors:
+                messages.error(request,'Name is required')
+            if 'gender' in child_form.errors:
+                messages.error(request,'Gender is required')
+    else:
+        child_form = ChildrenForm()
+    return render(request,'records/childform.html',{'child_form':child_form})
+
+
+def child_table(request):
+    children = Children.objects.all()
+    return render(request,'records/childtable.html',{'children':children})
