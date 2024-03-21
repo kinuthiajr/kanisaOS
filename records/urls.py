@@ -13,4 +13,6 @@ urlpatterns = [
     path('spousedelete/<int:record_id>/',views.spouse_erase,name='spousedelete'),
     path('childform/',views.children,name='childform'),
     path('childtable/',views.child_table,name='childtable'),
+    path('chidupdate/<int:record_id>/',views.child_edit,name='childupdate'),
+    path('childdelete/<int:record_id>/',views.child_erase,name='childdelete'),
 ]

@@ -112,6 +112,7 @@ def spouse_erase(request,record_id):
     # Children Views
 
 def children(request):
+    """ Valids and submits childform """
     if request.method == 'POST':
         print(request.POST)
         child_form = ChildrenForm(request.POST)
@@ -130,5 +131,33 @@ def children(request):
 
 
 def child_table(request):
+    """" Gets data form the Children model and presents objects in a table """
     children = Children.objects.all()
     return render(request,'records/childtable.html',{'children':children})
+
+
+def child_edit(request,record_id):
+    """ Changes details of a record """
+    record = get_object_or_404(Children,pk=record_id)
+    child_form = ChildrenForm(instance=record)
+    if request.method == 'POST':
+        print(request.POST)
+        child_form = ChildrenForm(request.POST,instance=record)
+        if child_form.is_valid():
+            child_form.save()
+            messages.success(request,'Successfully updated child')
+            return redirect('childtable')
+    return render(request,'records/childupdate.html',{'record':record,'child_form':child_form})
+
+
+def child_erase(request,record_id):
+    """ Deletes a record from the children model """
+    record = get_object_or_404(Children,pk=record_id)
+    child_form = ChildrenForm(instance=record)
+    if request.method == 'POST':
+        child_form = ChildrenForm(request.POST,instance=record)
+        if child_form.is_valid():
+            record.delete()
+            messages.success(request,'Successfully deleted child')
+            return redirect('childtable')
+    return render(request,'records/childdelete.html',{'record':record,'child_form':child_form})
