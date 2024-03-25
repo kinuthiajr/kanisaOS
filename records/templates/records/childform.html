@@ -21,8 +21,8 @@
             <h1 class="text-center mb-2">Children Form</h1>
             <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-wrap" method="post">
                 {% csrf_token %}
-                <div class="w-full flex flex-wrap -mx-3 mb-6 sm:flex-column">
-                    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-2">
+                <div class="w-full flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full sm:w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label for="{{ child_form.name.id_for_label }}">Name</label>
                         <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ child_form.name.id_for_label }}" name="{{ child_form.name.html_name }}" value="{{ child_form.name.value }}" />
                     </div>
