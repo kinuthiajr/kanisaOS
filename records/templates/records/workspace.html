@@ -21,6 +21,7 @@
         <div class="p-2.5 mt-1 flex items-center">
             <img class="mt-1" src="{% static 'img/logoblack.png' %}" >
         </div>
+        <h1 class="text-bookmark-grey text-sm items-center flex mt-1">Forms</h1>
         <hr class="my-2 text-grey-100 mt-3">
         <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-grey-100 focus:bg-gray-100 focus:text-black active:bg-gray-200 active:text-black">
             <a href="{% url 'memberform' %}" class="text-[15px] ml-4 rounded-2xl">Members</a>
@@ -30,6 +31,17 @@
         </div>
         <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
             <a href="{% url 'childform' %}" class="text-[15px] ml-4 rounded-2xl">Child</a>
+        </div>
+        <h1 class="text-bookmark-grey text-sm items-center flex mt-1">Tables </h1>
+        <hr>
+        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
+            <a href="{% url 'memberstable' %}" class="text-[15px] ml-4 rounded-2xl">Members</a>
+        </div>
+        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
+            <a href="{% url 'spousetable' %}" class="text-[15px] ml-4 rounded-2xl">Spouse</a>
+        </div>
+        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
+            <a href="{% url 'childtable' %}" class="text-[15px] ml-4 rounded-2xl">Child</a>
         </div>
         <a href="{% url 'account_logout' %}" class="p-2.5 flex flex-col items-center fixed bottom-0 rounded-md px-4 duration-300 cursor-pointer hover:bg-bookmark-white hover:text-black">
             <img class="mt-4" src="{% static 'img/logout.svg' %}" >

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from . forms import MemberProfileForm,SpouseForm,ChildrenForm
 from . models import MemberProfile,Spouse,Children
+from django.views.generic import DetailView
 from django.contrib import messages
 
 
@@ -161,3 +162,20 @@ def child_erase(request,record_id):
             messages.success(request,'Successfully deleted child')
             return redirect('childtable')
     return render(request,'records/childdelete.html',{'record':record,'child_form':child_form})
+
+
+class MemberDetailsView(DetailView):
+    """Responsible for displaying the details of a single MemberProfile along with additional details in this
+    case the Children associated with the MemberProfile instance
+    """
+    model = MemberProfile
+    template_name = 'records/details.html'
+    context_object_name = 'memberdetails'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        member = self.get_object()
+        children = MemberProfile.objects.all()
+        context[member] = member
+        context[children] = children
+        return context

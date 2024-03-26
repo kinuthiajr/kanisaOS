@@ -15,4 +15,5 @@ urlpatterns = [
     path('childtable/',views.child_table,name='childtable'),
     path('chidupdate/<int:record_id>/',views.child_edit,name='childupdate'),
     path('childdelete/<int:record_id>/',views.child_erase,name='childdelete'),
+    path('details/<int:pk>/',views.MemberDetailsView.as_view(),name='details')
 ]
