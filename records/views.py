@@ -165,17 +165,18 @@ def child_erase(request,record_id):
 
 
 class MemberDetailsView(DetailView):
-    """Responsible for displaying the details of a single MemberProfile along with additional details in this
+    """
+    Responsible for displaying the details of a single MemberProfile along with additional details in this
     case the Children associated with the MemberProfile instance
     """
     model = MemberProfile
     template_name = 'records/details.html'
-    context_object_name = 'memberdetails'
+    context_object_name = 'member'
 
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         member = self.get_object()
-        children = MemberProfile.objects.all()
-        context[member] = member
-        context[children] = children
+        children = member.children.all()
+        context['member'] = member
+        context['children'] = children
         return context

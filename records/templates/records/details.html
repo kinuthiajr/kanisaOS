@@ -12,7 +12,49 @@
 </head>
 <body class="font-Poppins">
     <section class="px-4 pt-20 pb-8 justify-end ml-[270px]">
-        
+        <div class="container items-center w-full flex flex-wrap -mx-3 mb-6">
+                <ul class="info">
+                    <li>
+                        <span title="Name">Name:</span> {{ member.name }}
+                    </li>
+                    <li>
+                        <span title="Phone">Phone:</span> {{ member.phone}}
+                    </li>
+                    <li>
+                        <span title="Confirmation date">Confirmation date:</span> {{ member.confirmation_date}}
+                    </li>
+                    <li>
+                        <span title="Baptism date">Baptism date:</span> {{ member.baptism_date}}
+                    </li>
+                    <li>
+                        <span title="Spouse">Spouse:</span> {{ member.spouse}}
+                    </li>
+                    <li>
+                        <span title="Communicant">Communicant:</span> {{ member.communicant}}
+                    </li>
+                    <li>
+                        <span title="Cell group">Cell group:</span> {{ member.cell_group }}
+                    </li>
+                    <li>
+                        <span title="Marital status">Marital Status:</span> {{ member.marital_status }}
+                    </li>
+                    <li>
+                        <span title="Created At">Created At:</span> {{ member.created_at }}
+                    </li>
+                    <li>
+                      <span title="Dept">Dept:</span> {{ member.department }}
+                    </li>
+                    <li>
+                      <span title="Gender">Gender:</span> {{ member.gender }}
+                    </li>
+                    <li>Children:</li>
+    <ul>
+        {% for child in children %}
+            <li>{{ child.name }}</li>
+        {% endfor %}
+    </ul>
+                </ul>
+        </div>
     </section>
 </body>
 </html>
