@@ -5,20 +5,75 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+         body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+        
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(128, 0, 128, 0.2); ;
+    padding: 55px 100px;  
+    width: 100%;
+    max-width: 1500px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+  }
+
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+</style>
+<style>
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
+      gap: 10px;
+      font-weight: bold;
+    }
+  
+    .info div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+    .info span[title] {
+    color: darkslateblue; 
+  }
+  .card-title {
+    text-align: center; 
+    text-decoration: underline; 
+    color:purple;
+  }
+  </style>
 </head>
-<body class="font-Poppins">
-    <section class="px-4 pt-20 pb-8 justify-end ml-[270px]">
-        <div class="container items-center w-full flex flex-wrap -mx-3 mb-6">
+    <body>
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card border-secondary mb-3">
+            <div class="card-body">
+                <h4 class="card-title">Member Details</h4>
                 <ul class="info">
                     <li>
                         <span title="Name">Name:</span> {{ member.name }}
                     </li>
                     <li>
-                        <span title="Phone">Phone:</span> {{ member.phone}}
+                        <span title="Phone">Phone:</span> {{ member.phone_number}}
                     </li>
                     <li>
                         <span title="Confirmation date">Confirmation date:</span> {{ member.confirmation_date}}
@@ -47,18 +102,59 @@
                     <li>
                       <span title="Gender">Gender:</span> {{ member.gender }}
                     </li>
-                    <li>Children:</li>
-    <ul>
-        {% for child in children %}
-            <li>{{ child.name }}</li>
-        {% endfor %}
-    </ul>
+                    
                 </ul>
+                        <h5 class="card-title">Children</h5>
+                        <style>
+                            .stl {
+                              list-style: none;
+                              padding: 0;
+                              margin: 0;
+                            }
+                          
+                            .stl li {
+                              display: flex;
+                              justify-content: space-between;
+                              border-bottom: 1px solid #ccc;
+                              padding: 10px 0;
+                            }
+                          
+                            .left-stl,
+                            .right-stl {
+                              width: 45%; 
+                            }
+                          
+                            .label {
+                              font-weight: bold;
+                              color: darkslateblue;
+                            }
+                          </style>
+                          
+                          
+                        {% for child in children %}
+                        <ul class="stl">
+                            <li>
+                                <span title="Name" class="label">Name:</span>{{ child.name }}
+    
+                            </li>
+                            <li>
+                            <span title="Date of birth" class="label">Date of birth:</span> {{ child.date_of_birth }}
+                            </li>
+                            <li>
+                            <span title="Confirmation date" class="label">Confirmation date:</span> {{ child.confirmation_date }}
+                            </li>
+                            <li>
+                            <span title="Department" class="label">Department:</span> {{ child.department }}
+                            </li>
+                        </ul>
+                        {% endfor %}
+
+                
+            </div>
+            </div>
         </div>
-    </section>
+        </div>
+    </div>
 </body>
 </html>
-
-
-
 {% endblock content %}

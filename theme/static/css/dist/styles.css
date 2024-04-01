@@ -618,6 +618,10 @@ video {
   top: 8rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -675,6 +679,10 @@ video {
   margin-left: 1rem;
 }
 
+.ml-\[270px\] {
+  margin-left: 270px;
+}
+
 .ml-\[300px\] {
   margin-left: 300px;
 }
@@ -727,16 +735,16 @@ video {
   margin-top: 2rem;
 }
 
-.ml-\[250px\] {
-  margin-left: 250px;
+.ml-\[200px\] {
+  margin-left: 200px;
 }
 
-.ml-\[270px\] {
-  margin-left: 270px;
+.mr-\[300px\] {
+  margin-right: 300px;
 }
 
-.mb-1 {
-  margin-bottom: 0.25rem;
+.mr-\[310px\] {
+  margin-right: 310px;
 }
 
 .block {
@@ -861,6 +869,14 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -887,6 +903,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-10 {
@@ -934,10 +954,6 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .overflow-y-auto {
@@ -1062,6 +1078,11 @@ video {
   padding: 2rem;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -1070,11 +1091,6 @@ video {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
 }
 
 .px-3 {
@@ -1146,6 +1162,10 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .text-center {
@@ -1274,6 +1294,14 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+.decoration-indigo-500 {
+  text-decoration-color: #6366f1;
 }
 
 .antialiased {
@@ -1429,6 +1457,10 @@ video {
     width: 75%;
   }
 
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1455,12 +1487,12 @@ video {
     height: 100%;
   }
 
-  .md\:w-full {
-    width: 100%;
-  }
-
   .md\:w-\[200px\] {
     width: 200px;
+  }
+
+  .md\:w-full {
+    width: 100%;
   }
 
   .md\:grid-cols-2 {
@@ -1473,11 +1505,6 @@ video {
 
   .md\:justify-start {
     justify-content: flex-start;
-  }
-
-  .md\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 }
 
