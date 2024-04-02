@@ -64,7 +64,7 @@
     <body>
     <div class="container">
         <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="col-lg-8 col-md-10 col-sm-12 ml-[200px]">
             <div class="card border-secondary mb-3">
             <div class="card-body">
                 <h4 class="card-title">Member Details</h4>
@@ -73,7 +73,7 @@
                         <span title="Name">Name:</span> {{ member.name }}
                     </li>
                     <li>
-                        <span title="Phone">Phone:</span> {{ member.phone_number}}
+                        <span title="Phone">Phone:</span> {{ member.phone }}
                     </li>
                     <li>
                         <span title="Confirmation date">Confirmation date:</span> {{ member.confirmation_date}}
@@ -134,8 +134,7 @@
                         {% for child in children %}
                         <ul class="stl">
                             <li>
-                                <span title="Name" class="label">Name:</span>{{ child.name }}
-    
+                            <span title="Name" class="label">Name:</span>{{ child.name }}
                             </li>
                             <li>
                             <span title="Date of birth" class="label">Date of birth:</span> {{ child.date_of_birth }}
