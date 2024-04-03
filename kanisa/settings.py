@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-*w3x^jg15l7cd8t__+#p18&ggzaw9qpsxxpi_f^f74&u(-n$dx
 
 env = os.getenv('Environment')
 if env == 'deploy':
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
 
