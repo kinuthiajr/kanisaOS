@@ -1,6 +1,7 @@
 # Ignore the virtual environment directory
 ack/
 *.log
+*.env
 node_modules/
 *oauth.json
 
