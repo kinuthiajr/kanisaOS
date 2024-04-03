@@ -32,8 +32,9 @@ if env == 'deploy':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','kanisa.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = ['https://kanisa.up.railway.app']
 
 # Application definition
 
