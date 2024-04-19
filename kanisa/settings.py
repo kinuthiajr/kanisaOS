@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-*w3x^jg15l7cd8t__+#p18&ggzaw9qpsxxpi_f^f74&u(-n$dx
 
 env = os.getenv('Environment')
 if env == 'deploy':
-    DEBUG = True
+    DEBUG = False
 else:
     DEBUG = True
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     #tailwind
     'tailwind',
     'theme',
-    'django_browser_reload',
+    #'django_browser_reload',
     #kanisaapps
     'kiongozi',
     'records',
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #tailwind config
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
+    #'django_browser_reload.middleware.BrowserReloadMiddleware',
     #allauth
     'allauth.account.middleware.AccountMiddleware',
     # Whitenoise 
