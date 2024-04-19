@@ -20,7 +20,7 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('kiongozi.urls')),
-    path("__reload__/", include("django_browser_reload.urls")),#tailwind config
+    #path("__reload__/", include("django_browser_reload.urls")),#tailwind config
     path('accounts/', include('allauth.urls')),#allauth
     path('',include('records.urls')),
 ] 
