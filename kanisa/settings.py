@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     #tailwind
     'tailwind',
     'theme',
-    'django_browser_reload',
+    #'django_browser_reload',
     #kanisaapps
     'kiongozi',
     'records',
