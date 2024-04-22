@@ -9,3 +9,30 @@ it its not possible to customise it to suit your own needs. I volunteered to cre
 ### Design
 The requirements were straight forward security of the system, ability to update records and destroy records. The system needs to adapt to the needs of the church membership form finally 
 the records should be available and accessible anywhere anytime.
+
+## Software Features
+1. **User management**
+   Users are able to login, logout, signup and reset password using their gmail accounts. All of this is done using the allauth package.
+2. **Create Records**
+   Use forms to create new records for members
+3. **Update**
+   Already exisiting record can be edited with new information.
+4. **Delete**
+   An existing record can be removed or destroyed.
+5.**Get records**
+   All records are displayed in a table format.
+
+ ## Stack
+
+ ### Server side
+Django framework
+
+### Client side
+TailwindCSS
+HTML
+CSS
+
+## Database
+**Production** - Postgres
+**Development** - SQLite
+
